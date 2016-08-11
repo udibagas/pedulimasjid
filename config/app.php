@@ -154,6 +154,8 @@ return [
          * Package Service Providers...
          */
 
+        Zofe\Rapyd\RapydServiceProvider::class,
+
 
         /*
          * Application Service Providers...
