@@ -11,8 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('/category', 'CategoryController', ['except' => ['show']]);
+    Route::resource('/menu', 'MenuController', ['except' => ['show']]);
+    Route::resource('/post/admin', 'PostController@admin');
+    Route::resource('/post', 'PostController', ['except' => ['index', 'show']]);
+    Route::resource('/slider', 'SliderController');
 });
 
-Route::resource('post', 'PostController');
+Route::resource('/category', 'CategoryController', ['only' => ['show']]);
+Route::resource('/post', 'PostController', ['only' => ['index', 'show']]);
+
+Route::auth();
