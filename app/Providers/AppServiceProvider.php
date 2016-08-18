@@ -14,15 +14,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    //     view()->share([
-	// 		'menuLeft'       => Menu::left()->get(),
-	// 		'menuRight'      => Menu::right()->get(),
-	// 		'menuFooter1'    => Menu::footer1()->get(),
-	// 		'menuFooter2'    => Menu::footer2()->get(),
-	// 		'menuFooter3'    => Menu::footer3()->get(),
-	// 		'menuCopyright'  => Menu::copyright()->get(),
-	// 	]);
-    // }
+        // view()->share([
+		// 	'menuLeft'       => Menu::left()->get(),
+		// 	'menuRight'      => Menu::right()->get(),
+		// 	'menuFooter1'    => Menu::footer1()->get(),
+		// 	'menuFooter2'    => Menu::footer2()->get(),
+		// 	'menuFooter3'    => Menu::footer3()->get(),
+		// 	'menuCopyright'  => Menu::copyright()->get(),
+		// ]);
+    }
 
     /**
      * Register any application services.
