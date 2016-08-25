@@ -16,7 +16,7 @@
 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
 	<label for="content" class="col-md-2 control-label">Content :</label>
 	<div class="col-md-10">
-		{{ Form::textarea('content', $slider->content, ['class' => 'form-control', 'placeholder' => 'Content']) }}
+		{{ Form::textarea('content', $slider->content, ['class' => 'form-control summernote', 'placeholder' => 'Content']) }}
 
 		@if ($errors->has('content'))
 		<span class="help-block">

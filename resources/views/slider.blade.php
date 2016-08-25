@@ -15,7 +15,7 @@
                 <img src="/{{ $s->img }}" alt="...">
                 <div class="carousel-caption">
                     <h2>{{ $s->title }}</h2>
-                    <p>{{ $s->content }}</p>
+                    {!! $s->content !!}
                 </div>
             </div>
             <?php $i++ ?>
