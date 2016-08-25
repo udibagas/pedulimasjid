@@ -16,13 +16,16 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/category', 'CategoryController', ['except' => ['show']]);
+    Route::get('/donasi/admin', 'DonasiController@admin');
+    Route::resource('/donasi', 'DonasiController');
     Route::resource('/menu', 'MenuController', ['except' => ['show']]);
-    Route::resource('/post/admin', 'PostController@admin');
+    Route::get('/post/admin', 'PostController@admin');
     Route::resource('/post', 'PostController', ['except' => ['index', 'show']]);
     Route::resource('/slider', 'SliderController');
 });
 
 Route::resource('/category', 'CategoryController', ['only' => ['show']]);
+Route::resource('/donasi', 'DonasiController', ['only' => ['index']]);
 Route::resource('/post', 'PostController', ['only' => ['index', 'show']]);
 
 Route::auth();

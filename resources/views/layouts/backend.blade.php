@@ -48,6 +48,7 @@
                     <li><a href="{{ url('/post/admin') }}">POSTS</a></li>
                     <li><a href="{{ url('/slider') }}">SLIDERS</a></li>
                     <li><a href="{{ url('/masjid/admin') }}">MASJIDS</a></li>
+                    <li><a href="{{ url('/donasi/admin') }}">DONASI</a></li>
                     <li><a href="{{ url('/user') }}">USERS</a></li>
                 </ul>
 
