@@ -11,6 +11,6 @@
             <h4 style="margin:0;">{{ $p->title }}</h4>
         </a>
         <span class="text-muted">{{ $p->updated_at->diffForHumans() }}</span>
-        <p> {{ str_limit($p->content) }}</p>
+        <p> {!! str_limit($p->content) !!}</p>
     </div>
 </div>
