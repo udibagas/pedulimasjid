@@ -7,17 +7,17 @@
 
     <title>Salwa Peduli Masjid</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="/fa/css/font-awesome.min.css">
-
     <!-- Styles -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/summernote/summernote.css">
     <link rel="stylesheet" href="/css/backend.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- JavaScripts -->
     <script src="/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/summernote/summernote.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 </head>
@@ -74,6 +74,10 @@
     <script type="text/javascript">
         $(document).on('click', '.confirm', function() {
             return confirm('Anda yakin?');
+        });
+
+        $('.summernote').summernote({
+            height: 300
         });
     </script>
 

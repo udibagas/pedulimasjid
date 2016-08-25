@@ -27,7 +27,7 @@
 </div>
 
 <div class="form-group{{ $errors->has('placement') ? ' has-error' : '' }}">
-	<label for="placement" class="col-md-2 control-label">URL :</label>
+	<label for="placement" class="col-md-2 control-label">Placement :</label>
 	<div class="col-md-10">
 		{{ Form::select('placement', \App\Menu::getPlacementList(), $menu->placement, ['class' => 'form-control', 'placeholder' => '- Placement -']) }}
 
