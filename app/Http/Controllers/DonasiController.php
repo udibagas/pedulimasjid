@@ -48,7 +48,7 @@ class DonasiController extends Controller
     public function store(DonasiRequest $request)
     {
         Donasi::create($request->all());
-        return redirect('/donasi');
+        return redirect('/donasi/admin');
     }
 
     /**
@@ -86,7 +86,7 @@ class DonasiController extends Controller
     public function update(DonasiRequest $request, Donasi $donasi)
     {
         $donasi->update($request->all());
-        return redirect('/donasi');
+        return redirect('/donasi/admin');
     }
 
     /**

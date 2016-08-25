@@ -4,9 +4,6 @@
 	<label for="tanggal" class="col-md-2 control-label">Tanggal :</label>
 	<div class="col-md-3">
 		{{ Form::text('tanggal', $donasi->tanggal, ['class' => 'form-control', 'placeholder' => 'Tanggal']) }}
-		<span class="help-block">
-			<strong>yyyy-mm-dd</strong>
-		</span>
 		@if ($errors->has('tanggal'))
 		<span class="help-block">
 			<strong>{{ $errors->first('tanggal') }}</strong>
