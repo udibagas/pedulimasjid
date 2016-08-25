@@ -20,6 +20,11 @@ class MasjidController extends Controller
         return view('masjid.index', ['masjids' => Masjid::paginate()]);
     }
 
+    public function admin(Request $request)
+    {
+        return view('masjid.admin', ['masjids' => Masjid::paginate()]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
