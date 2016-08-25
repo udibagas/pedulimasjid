@@ -78,8 +78,4 @@
         </tfoot>
     </table>
 
-    <div class="text-center">
-        {{ $donasis->appends(['q' => request('q')])->links() }}
-    </div>
-
 @endsection

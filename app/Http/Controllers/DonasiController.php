@@ -18,14 +18,14 @@ class DonasiController extends Controller
     public function index(Request $request)
     {
         return view('donasi.index', [
-            'donasis' => Donasi::paginate(10)
+            'donasis' => Donasi::all()
         ]);
     }
 
     public function admin(Request $request)
     {
         return view('donasi.admin', [
-            'donasis' => Donasi::paginate(10)
+            'donasis' => Donasi::all()
         ]);
     }
 
