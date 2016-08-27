@@ -19,7 +19,7 @@
                 <th>Sender</th>
                 <th>Body</th>
                 <th>Date</th>
-                <th style="width:50px;">Action</th>
+                <th style="width:60px;">Action</th>
             </tr>
         </thead>
         <tbody>
