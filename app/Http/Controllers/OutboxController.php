@@ -47,7 +47,7 @@ class OutboxController extends Controller
         $inbox->status = Inbox::STATUS_REPLIED;
         $inbox->save();
 
-        \Mail::send('emails.outbox', [
+        \Mail::send('email.outbox', [
                 'outbox' => $outbox, 'inbox' => $inbox
             ], function ($m) use ($inbox) {
                 $m->to($inbox->email, $inbox->name)->subject('Re: '.$inbox->subject);
