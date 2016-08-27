@@ -57,6 +57,7 @@ class InboxController extends Controller
 
         // kirim email disini
         \Mail::send('email.inbox', ['inbox' => $inbox], function ($m) use ($inbox) {
+                $m->from($inbox->email, $inbox->name);
                 $m->to('pedulimasjid@salamdakwah.com', 'Salwa Peduli Masjid')->subject($inbox->subject);
             }
         );

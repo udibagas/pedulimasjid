@@ -1,5 +1,5 @@
 <h3>{{ $inbox->subject }}</h3>
-<p>{{ nl2br($inbox->body) }}</p>
+<p>{!! nl2br($inbox->body) !!}</p>
 
 <hr>
 
