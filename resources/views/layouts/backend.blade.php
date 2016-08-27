@@ -75,7 +75,7 @@
                 <br>
                 <div class="list-group">
                     <a  class="list-group-item" href="{{ url('/category') }}"><i class="fa fa-tags"></i> CATEGORIES</a>
-                    <a  class="list-group-item" href="{{ url('/donasi/admin') }}"><i class="fa fa-dollar"></i> DONASI</a>
+                    <a  class="list-group-item" href="{{ url('/donasi/admin') }}"><i class="fa fa-money"></i> DONASI</a>
                     <a  class="list-group-item" href="{{ url('/inbox/admin') }}"><i class="fa fa-inbox"></i> INBOX</a>
                     <a  class="list-group-item" href="{{ url('/masjid/admin') }}"><i class="fa fa-home"></i> MASJID</a>
                     <a  class="list-group-item" href="{{ url('/menu') }}"><i class="fa fa-bars"></i> MENUS</a>
