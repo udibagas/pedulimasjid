@@ -3,4 +3,4 @@
 
 <hr>
 
-<p>{{ nl2br($outbox->body) }}</p>
+<p>{!! nl2br($outbox->body) !!}</p>

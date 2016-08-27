@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Salwa Peduli Masjid</title>
+    <title>Salwa Peduli Masjid | @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="/fa/css/font-awesome.min.css">
@@ -94,7 +94,7 @@
                 <a href="{{ $m->link }}">{{ $m->label }}</a> |
                 @endforeach
                 <br>
-                Copyright &copy; {{ date('Y') }} <a href="#">Www.SalamDakwah.Com</a>
+                Copyright &copy; {{ date('Y') }} <a href="http://www.salamdakwah.com">Www.SalamDakwah.Com</a>
             </div>
         </div>
     </div>
