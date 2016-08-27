@@ -1,9 +1,7 @@
-{{ $inbox->name }} ({{ $inbox->email }})
+{{ $inbox->name }} (<a href="mailto:{{ $inbox->email }}">{{ $inbox->email }}</a>)
 
-{{ "\n" }}
-{{ "\n" }}
+<br><br>
 
-{{ $inbox->subject }}
-{{ "\n" }}
-{{ "\n" }}
-{{ $inbox->body }}
+<h3>{{ $inbox->subject }}</h3>
+
+<p>{{ nl2br($inbox->body) }}</p>

@@ -1,16 +1,6 @@
-{{ $outbox->body }}
-{{ "\n" }}
-{{ "\n" }}
+<h3>{{ $inbox->subject }}</h3>
+<p>{{ nl2br($inbox->body) }}</p>
 
-----------------------------------
-{{ "\n" }}
-{{ "\n" }}
-{{ $inbox->name }} ({{ $inbox->email }})
+<hr>
 
-{{ "\n" }}
-{{ "\n" }}
-
-{{ $inbox->subject }}
-{{ "\n" }}
-{{ "\n" }}
-{{ $inbox->body }}
+<p>{{ nl2br($outbox->body) }}</p>
