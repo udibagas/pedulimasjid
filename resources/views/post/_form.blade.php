@@ -50,7 +50,7 @@
 					@endif
 				</div>
 
-				<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+				<div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
 					{{ Form::select('status', [0 => 'Draft', 1 => 'Published', 2 => 'Archived'], $post->status, ['class' => 'form-control', 'placeholder' => '-- Select Status --']) }}
 
 					@if ($errors->has('status'))
@@ -77,7 +77,7 @@
 	</div>
 </div>
 
-<h3>POST GALLERY</h3>
-<hr>
+<!-- <h3>POST GALLERY</h3>
+<hr> -->
 
 {!! Form::close() !!}

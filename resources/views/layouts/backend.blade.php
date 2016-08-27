@@ -42,15 +42,16 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse" style="margin-top:-40px;">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <!-- <ul class="nav navbar-nav">
                     <li><a href="{{ url('/category') }}">CATEGORIES</a></li>
                     <li><a href="{{ url('/menu') }}">MENUS</a></li>
                     <li><a href="{{ url('/post/admin') }}">POSTS</a></li>
                     <li><a href="{{ url('/slider') }}">SLIDERS</a></li>
-                    <li><a href="{{ url('/masjid/admin') }}">MASJIDS</a></li>
+                    <li><a href="{{ url('/masjid/admin') }}">MASJID</a></li>
                     <li><a href="{{ url('/donasi/admin') }}">DONASI</a></li>
+                    <li><a href="{{ url('/inbox/admin') }}">INBOX</a></li>
                     <li><a href="{{ url('/user') }}">USERS</a></li>
-                </ul>
+                </ul> -->
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -69,7 +70,24 @@
     </nav>
 
     <div class="container-fluid">
-        @yield('content')
+        <div class="row">
+            <div class="col-md-2">
+                <br>
+                <div class="list-group">
+                    <a  class="list-group-item" href="{{ url('/category') }}"><i class="fa fa-tags"></i> CATEGORIES</a>
+                    <a  class="list-group-item" href="{{ url('/donasi/admin') }}"><i class="fa fa-dollar"></i> DONASI</a>
+                    <a  class="list-group-item" href="{{ url('/inbox/admin') }}"><i class="fa fa-inbox"></i> INBOX</a>
+                    <a  class="list-group-item" href="{{ url('/masjid/admin') }}"><i class="fa fa-home"></i> MASJID</a>
+                    <a  class="list-group-item" href="{{ url('/menu') }}"><i class="fa fa-bars"></i> MENUS</a>
+                    <a  class="list-group-item" href="{{ url('/post/admin') }}"><i class="fa fa-file-text"></i> POSTS</a>
+                    <a  class="list-group-item" href="{{ url('/slider') }}"><i class="fa fa-image"></i> SLIDERS</a>
+                    <!-- <a  class="list-group-item" href="{{ url('/user') }}"><i class="fa fa-users"></i> USERS</a> -->
+                </div>
+            </div>
+            <div class="col-md-10">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -78,7 +96,7 @@
         });
 
         $('.summernote').summernote({
-            height: 300
+            height: 250
         });
     </script>
 

@@ -2,19 +2,53 @@
 
 @section('content')
 
-    <h2>{{ $category->name }}</h2>
+    <h2>{{ $masjid->nama }}</h2>
     <hr>
 
     <div class="row">
-        @foreach ($posts as $p)
-            <div class="col-md-4 col-sm-6" style="margin-bottom:20px;">
-                @include('post._list', ['p' => $p])
+        <div class="col-md-4">
+            @if ($masjid->img)
+                <img src="/{{ $masjid->img }}" alt="{{ $masjid->nama }}" class="img-responsive" />
+            @endif
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <table class="table table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <td class="td-label">Nama Masjid</td>
+                            <td>: {{ $masjid->nama }}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Alamat</td>
+                            <td>
+                                : {{ $masjid->alamat }}, Kelurahan {{ $masjid->kelurahan ? $masjid->kelurahan->nama : '-' }}, Kecamatan {{ $masjid->kecamatan ? $masjid->kecamatan->nama : '-' }}, {{ $masjid->kota ? $masjid->kota->nama : '-' }}, Provinsi {{ $masjid->provinsi ? $masjid->provinsi->nama : '-' }}, Kode Pos : {{ $masjid->kode_pos or '-' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Lat/Long</td>
+                            <td>
+                                : <a href="#" title="Lihat di Google Map">
+                                    {{ $masjid->lat }}/{{ $masjid->long }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Contact Person</td>
+                            <td>: {{ $masjid->kontak_nama }} - {{ $masjid->kontak_telp }}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Kegiatan Rutin</td>
+                            <td>: {{ $masjid->kegiatan }}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Kebutuhan Utama</td>
+                            <td>: {{ $masjid->kebutuhan }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        @endforeach
-    </div>
-
-    <div class="text-center">
-        {!! $posts->links() !!}
+        </div>
     </div>
 
 @endsection

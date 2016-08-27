@@ -2,16 +2,15 @@
 
 @section('content')
 
-    <h3>MANAGE POSTS</h3>
-    <hr>
-
-    {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
-        <a href="/post/create" class="btn btn-info">ADD POST</a>
-        <div class="pull-right">
+    <div class="pull-right">
+        {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
+            <br>
+            <a href="/post/create" class="btn btn-info"><i class="fa fa-plus"></i> ADD POST</a>
             {!! Form::text('q', request('q'), ['class' => 'form-control', 'placeholder' => 'Search']) !!}
-        </div>
-    {!! Form::close() !!}
+        {!! Form::close() !!}
+    </div>
 
+    <h3>MANAGE POSTS</h3>
     <hr>
 
     <table class="table table-striped table-hover table-condensed">
@@ -22,7 +21,7 @@
                 <th>Type</th>
                 <th>Status</th>
                 <th>Last Update</th>
-                <th style="width:120px;">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -41,8 +40,8 @@
                 <td>{{ $s->updated_at->diffForHumans() }}</td>
                 <td>
                     {!! Form::open(['method' => 'DELETE', 'url' => '/post/'.$s->id]) !!}
-                        <a href="/post/{{ $s->id }}/edit" class="btn btn-info btn-xs">EDIT</a>
-                        <button type="submit" name="delete" class="btn btn-danger btn-xs confirm">DELETE</button>
+                        <a href="/post/{{ $s->id }}/edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
+                        <button type="submit" name="delete" class="btn btn-default btn-xs confirm"><i class="fa fa-trash"></i></button>
                     {!! Form::close() !!}
                 </td>
             </tr>

@@ -2,3 +2,18 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
+.text-bold, .text-bold td {
+    font-weight: bold;
+}
+
+.well {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.alert {
+    border: none;
+    border-radius: 0;
+}

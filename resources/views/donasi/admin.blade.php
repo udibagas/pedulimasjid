@@ -2,6 +2,11 @@
 
 @section('content')
 
+    <div class="pull-right">
+        <br>
+        <a href="/donasi/create" class="btn btn-info"><i class="fa fa-plus"></i> ADD DONASI</a>
+    </div>
+
     <h3>MANAGE DONASI</h3>
     <hr>
 
@@ -39,8 +44,8 @@
                 </td>
                 <td></td>
                 <td class="text-right">
-                    <a href="/donasi/create" class="btn btn-info">ADD</a>
-                    <button type="submit" name="filter" class="btn btn-info" value="filter">FILTER</button>
+                    <button type="submit" name="filter" class="btn btn-default" value="filter"><i class="fa fa-filter"></i></button>
+                    <a href="/donasi/admin" class="btn btn-default"><i class="fa fa-refresh"></i></a>
                 </td>
             </tr>
             {!! Form::close() !!}
@@ -58,8 +63,8 @@
                 <td class="text-right">{{ number_format($s->jumlah, 0, ',', '.') }}</td>
                 <td class="text-right">
                     {!! Form::open(['method' => 'DELETE', 'url' => '/donasi/'.$s->id]) !!}
-                        <a href="/donasi/{{ $s->id }}/edit" class="btn btn-info btn-xs">EDIT</a>
-                        <button type="submit" name="submit" class="confirm btn btn-danger btn-xs">DELETE</button>
+                        <a href="/donasi/{{ $s->id }}/edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
+                        <button type="submit" name="submit" class="confirm btn btn-default btn-xs"><i class="fa fa-trash"></i></button>
                     {!! Form::close() !!}
                 </td>
             </tr>

@@ -18,14 +18,34 @@ class DonasiController extends Controller
     public function index(Request $request)
     {
         return view('donasi.index', [
-            'donasis' => Donasi::all()
+            'donasis' => Donasi::when($request->tanggal, function($query) use ($request) {
+                            return $query->whereRaw('DAY(tanggal) = '.$request->tanggal);
+                        })->when($request->bulan, function($query) use ($request) {
+                            return $query->whereRaw('MONTH(tanggal) = '.$request->bulan);
+                        })->when($request->tahun, function($query) use ($request) {
+                            return $query->whereRaw('YEAR(tanggal) = '.$request->tahun);
+                        })->when($request->donatur, function($query) use ($request) {
+                            return $query->where('donatur', 'LIKE', '%'.$request->donatur.'%');
+                        })->when($request->jenis, function($query) use ($request) {
+                            return $query->where('jenis', $request->jenis);
+                        })->get()
         ]);
     }
 
     public function admin(Request $request)
     {
         return view('donasi.admin', [
-            'donasis' => Donasi::all()
+            'donasis' => Donasi::when($request->tanggal, function($query) use ($request) {
+                            return $query->whereRaw('DAY(tanggal) = '.$request->tanggal);
+                        })->when($request->bulan, function($query) use ($request) {
+                            return $query->whereRaw('MONTH(tanggal) = '.$request->bulan);
+                        })->when($request->tahun, function($query) use ($request) {
+                            return $query->whereRaw('YEAR(tanggal) = '.$request->tahun);
+                        })->when($request->donatur, function($query) use ($request) {
+                            return $query->where('donatur', 'LIKE', '%'.$request->donatur.'%');
+                        })->when($request->jenis, function($query) use ($request) {
+                            return $query->where('jenis', $request->jenis);
+                        })->get()
         ]);
     }
 

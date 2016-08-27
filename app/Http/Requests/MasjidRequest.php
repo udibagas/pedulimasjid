@@ -25,10 +25,10 @@ class MasjidRequest extends Request
     {
         return [
             'nama' => 'required',
-            'pulau_id' => 'required',
+            // 'pulau_id' => 'required',
             'provinsi_id' => 'required',
             'kota_id' => 'required',
-            'kecamatan_id' => 'required',
+            // 'kecamatan_id' => 'required',
             // 'kelurahan_id' => 'required',
             'alamat' => 'required',
             // 'kode_pos' => 'required',

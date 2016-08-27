@@ -17,12 +17,20 @@ class MasjidController extends Controller
      */
     public function index(Request $request)
     {
-        return view('masjid.index', ['masjids' => Masjid::paginate()]);
+        return view('masjid.index', [
+            'masjids' => Masjid::when($request->q, function($query) use ($request) {
+                            return $query->where('nama', 'LIKE', '%'.$request->q.'%');
+                        })->paginate()
+        ]);
     }
 
     public function admin(Request $request)
     {
-        return view('masjid.admin', ['masjids' => Masjid::paginate()]);
+        return view('masjid.admin', [
+            'masjids' => Masjid::when($request->q, function($query) use ($request) {
+                            return $query->where('nama', 'LIKE', '%'.$request->q.'%');
+                        })->paginate()
+        ]);
     }
 
     /**
