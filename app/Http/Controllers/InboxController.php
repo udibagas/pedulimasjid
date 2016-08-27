@@ -115,6 +115,7 @@ class InboxController extends Controller
      */
     public function destroy(Inbox $inbox)
     {
+        $inbox->outbox->delete();
         $inbox->delete();
         return redirect('/inbox/admin');
     }
