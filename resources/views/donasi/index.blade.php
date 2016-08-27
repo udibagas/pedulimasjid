@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Donasi')
+
 @section('content')
 
     <h3>LAPORAN DONASI</h3>

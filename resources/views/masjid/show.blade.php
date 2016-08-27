@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Masjid : '.$masjid->nama)
+
 @section('content')
 
     <h2>{{ $masjid->nama }}</h2>

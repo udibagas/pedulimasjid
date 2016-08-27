@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $category->name)
+
 @section('content')
 
     <h2>{{ $category->name }}</h2>

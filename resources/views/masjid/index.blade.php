@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Masjid')
+
 @section('content')
 
 <div class="pull-right">

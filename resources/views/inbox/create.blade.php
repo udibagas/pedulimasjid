@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Kirim Pesan')
+
 @section('content')
 
     <div class="row">
