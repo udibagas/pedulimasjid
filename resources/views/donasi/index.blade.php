@@ -13,7 +13,7 @@
         </div>
 
         <div class="col-md-5">
-            chart will be here
+            <div id="chart"></div>
         </div>
     </div>
 

@@ -51,9 +51,19 @@
             {!! Form::close() !!}
         </thead>
         <tbody>
-            <?php $total = 0; ?>
+            <?php $total = 0; $zakat = 0; $sedekah = 0; ?>
             @foreach ($donasis as $s)
-            <?php $total += $s->jumlah ?>
+            <?php
+                $total += $s->jumlah;
+
+                if ($s->jenis == 'zakat') {
+                    $zakat += $s->jumlah;
+                }
+
+                if ($s->jenis == 'sedekah') {
+                    $sedekah += $s->jumlah;
+                }
+            ?>
             <tr>
                 <td>{{ date('d', strtotime($s->tanggal)) }}</td>
                 <td>{{ date('F', strtotime($s->tanggal)) }}</td>

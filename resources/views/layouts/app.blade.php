@@ -18,6 +18,8 @@
     <!-- JavaScripts -->
     <script src="/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/highcharts/js/highcharts.js"></script>
+    <script src="/highcharts/js/modules/exporting.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 </head>
@@ -66,7 +68,7 @@
         @yield('slider')
     </div>
 
-    <div class="container" style="min-height:400px;padding:40px 0;">
+    <div class="container" style="min-height:400px;padding:40px 15px;">
         @yield('content')
     </div>
 
@@ -98,6 +100,8 @@
             </div>
         </div>
     </div>
+
+    @stack('script')
 
 </body>
 </html>
