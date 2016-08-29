@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'pedulimasjid@salamdakwah.com', 'name' => 'Salwa Peduli masjid'],
+    'from' => ['address' => 'pedulimasjid@salamdakwah.com', 'name' => 'Salwa Peduli Masjid'],
 
     /*
     |--------------------------------------------------------------------------

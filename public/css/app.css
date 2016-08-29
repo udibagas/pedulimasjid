@@ -1,9 +1,26 @@
 @import 'https://fonts.googleapis.com/css?family=Muli';
 
+@font-face {
+    font-family: "UthmanTN1Ver10";
+    src: url("/fonts/UthmanTN1Ver10.otf");
+}
+
+@font-face {
+    font-family: "UthmanTN1BVer10";
+    src: url("/fonts/UthmanTN1BVer10.otf");
+	font-weight: bold;
+}
+
 body {
     font-family: 'Muli', sans-serif;
     padding-top: 80px;
     color: #333;
+}
+
+.arab, .arabic, .ayat, .quran {
+	font-family: "UthmanTN1Ver10", serif;
+	line-height: 1.8em;
+	direction: rtl;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {

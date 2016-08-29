@@ -21,7 +21,7 @@
             </p>
 
             <div class="well text-bold">
-                Email : <a href="mailto:admin@salwapedulimasj.id">admin@salwapedulimasj.id</a><br>
+                Email : <a href="mailto:pedulimasjid@salamdakwah.com">pedulimasjid@salamdakwah.com</a><br>
                 WA/SMS : 08568648757
             </div>
 
