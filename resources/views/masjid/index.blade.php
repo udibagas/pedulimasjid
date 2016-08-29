@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="pull-right">
+<div class="pull-right hidden-xs">
 {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
         {!! Form::text('q', request('q'), ['class' => 'form-control', 'placeholder' => 'Search']) !!}
 {!! Form::close() !!}
@@ -12,6 +12,13 @@
 
 <h3>DAFTAR MASJID</h3>
 <hr>
+
+<div class="hidden-md hidden-sm hidden-lg hidden-xl">
+{!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
+        {!! Form::text('q', request('q'), ['class' => 'form-control', 'placeholder' => 'Search']) !!}
+{!! Form::close() !!}
+<br>
+</div>
 
 <div class="row">
     @foreach ($masjids as $m)

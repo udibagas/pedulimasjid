@@ -32,7 +32,7 @@
             </div>
 
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 hidden-xs">
             <ul class="list-group">
                 @foreach (\App\Post::ofType(\App\Post::TYPE_POST)->ofStatus(\App\Post::STATUS_PUBLISHED)->limit(5)->latest()->get() as $p)
                 <li class="list-group-item">
