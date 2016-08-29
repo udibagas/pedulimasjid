@@ -38,6 +38,19 @@
 	</div>
 </div>
 
+<div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
+	<label for="keterangan" class="col-md-2 control-label">Keterangan :</label>
+	<div class="col-md-3">
+		{{ Form::text('keterangan', $donasi->keterangan, ['class' => 'form-control', 'placeholder' => 'Keterangan']) }}
+
+		@if ($errors->has('keterangan'))
+		<span class="help-block">
+			<strong>{{ $errors->first('keterangan') }}</strong>
+		</span>
+		@endif
+	</div>
+</div>
+
 <div class="form-group{{ $errors->has('jenis') ? ' has-error' : '' }}">
 	<label for="jenis" class="col-md-2 control-label">Jenis :</label>
 	<div class="col-md-3">
