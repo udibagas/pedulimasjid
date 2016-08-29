@@ -30,7 +30,7 @@
                         <tr>
                             <td class="td-label">Lat/Long</td>
                             <td>
-                                <a href="#" title="Lihat di Google Map">
+                                <a href="https://www.google.co.id/maps/{{ '@'.$masjid->lat }},{{ $masjid->long }},15.75z?hl=en" title="Lihat di Google Map" target="_blank">
                                     {{ $masjid->lat }}/{{ $masjid->long }}
                                 </a>
                             </td>
