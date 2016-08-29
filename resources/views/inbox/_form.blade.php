@@ -43,7 +43,7 @@
 <hr>
 
 <div class="form-group">
-	<button type="sumbit" name="save" class="btn btn-info">KIRIM</button>
+	<button type="sumbit" name="save" class="btn btn-brown">KIRIM PESAN</button>
 </div>
 
 

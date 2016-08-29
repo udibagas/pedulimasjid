@@ -17,7 +17,11 @@ body {
 }
 
 .navbar-nav>li>a {
-    padding: 20px 15px;
+    padding: 27px 25px;
+}
+
+.navbar-nav>li>a:first-of-type {
+    padding-left: 0;
 }
 
 .footer {

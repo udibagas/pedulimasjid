@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
+use App\Post;
 
 class CategoryController extends Controller
 {
@@ -56,7 +57,9 @@ class CategoryController extends Controller
     {
         return view('category.show', [
             'category' => $category,
-            'posts' => $category->posts()->paginate()
+            'posts' => $category->posts()
+                        ->ofStatus(Post::STATUS_PUBLISHED)
+                        ->latest()->paginate()
         ]);
     }
 

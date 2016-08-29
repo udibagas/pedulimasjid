@@ -18,8 +18,10 @@
                 <th>Tahun</th>
                 <th>Donatur</th>
                 <th>Jenis</th>
+                <th>Keterangan</th>
+                <th>Alokasi</th>
                 <th>Jumlah</th>
-                <th>Action</th>
+                <th style="width:60px;">Action</th>
             </tr>
             {!! Form::open(['method' => 'GET']) !!}
             <tr>
@@ -40,9 +42,14 @@
                     {!! Form::text('donatur', request('donatur'), ['class' => 'form-control', 'placeholder' => 'Donatur']) !!}
                 </td>
                 <td>
-                    {!! Form::select('jenis', ['sedekah' => 'Sedekah', 'zakat' => 'Zakat'], request('jenis'), ['class' => 'form-control', 'placeholder' => '-- Jenis --']) !!}
+                    {!! Form::select('jenis', App\Donasi::getJenisList(), request('jenis'), ['class' => 'form-control', 'placeholder' => '-- Jenis --']) !!}
                 </td>
-                <td></td>
+                <td>
+                    {!! Form::text('keterangan', request('keterangan'), ['class' => 'form-control', 'placeholder' => 'Keterangan']) !!}
+                </td>
+                <td>
+                    {!! Form::text('alokasi', request('alokasi'), ['class' => 'form-control', 'placeholder' => 'Alokasi']) !!}
+                </td>
                 <td class="text-right">
                     <button type="submit" name="filter" class="btn btn-default" value="filter"><i class="fa fa-filter"></i></button>
                     <a href="/donasi/admin" class="btn btn-default"><i class="fa fa-refresh"></i></a>
@@ -51,7 +58,7 @@
             {!! Form::close() !!}
         </thead>
         <tbody>
-            <?php $total = 0; $zakat = 0; $sedekah = 0; ?>
+            <?php $total = 0; $zakat = 0; $sedekah = 0; $qurban = 0; ?>
             @foreach ($donasis as $s)
             <?php
                 $total += $s->jumlah;
@@ -63,6 +70,10 @@
                 if ($s->jenis == 'sedekah') {
                     $sedekah += $s->jumlah;
                 }
+
+                if ($s->jenis == 'qurban') {
+                    $qurban += $s->jumlah;
+                }
             ?>
             <tr>
                 <td>{{ date('d', strtotime($s->tanggal)) }}</td>
@@ -70,6 +81,8 @@
                 <td>{{ date('Y', strtotime($s->tanggal)) }}</td>
                 <td>{{ $s->donatur }}</td>
                 <td>{{ $s->jenis }}</td>
+                <td>{{ $s->keterangan }}</td>
+                <td>{{ $s->alokasi }}</td>
                 <td class="text-right">{{ number_format($s->jumlah, 0, ',', '.') }}</td>
                 <td class="text-right">
                     {!! Form::open(['method' => 'DELETE', 'url' => '/donasi/'.$s->id]) !!}
@@ -82,6 +95,8 @@
         </tbody>
         <tfoot>
             <tr style="font-size:20px;">
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

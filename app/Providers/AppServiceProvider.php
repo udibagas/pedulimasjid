@@ -15,12 +15,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->share([
-			'menuLeft'       => Menu::left()->get(),
-			'menuRight'      => Menu::right()->get(),
-			'menuFooter1'    => Menu::footer1()->get(),
-			'menuFooter2'    => Menu::footer2()->get(),
-			'menuFooter3'    => Menu::footer3()->get(),
-			'menuCopyright'  => Menu::copyright()->get(),
+			'menuLeft'       => Menu::ofPlacement('left')->get(),
+			'menuRight'      => Menu::ofPlacement('right')->get(),
+			'menuFooter1'    => Menu::ofPlacement('footer1')->get(),
+			'menuFooter2'    => Menu::ofPlacement('footer2')->get(),
+			'menuFooter3'    => Menu::ofPlacement('footer3')->get(),
+			'menuCopyright'  => Menu::ofPlacement('copyright')->get(),
 		]);
     }
 

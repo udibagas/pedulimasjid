@@ -2,8 +2,17 @@
 
 <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
 	<label for="link" class="col-md-2 control-label">Link :</label>
-	<div class="col-md-10">
-		{{ Form::select('link', \App\Menu::getMenuList(), $menu->link, ['class' => 'form-control', 'placeholder' => '- Link -']) }}
+	<div class="col-md-5">
+		{{ Form::select('link1', \App\Menu::getMenuList(), $menu->link, ['class' => 'form-control', 'placeholder' => '- Link -']) }}
+
+		@if ($errors->has('link'))
+		<span class="help-block">
+			<strong>{{ $errors->first('link') }}</strong>
+		</span>
+		@endif
+	</div>
+	<div class="col-md-5">
+		{{ Form::text('link', $menu->link, ['class' => 'form-control', 'placeholder' => 'Link']) }}
 
 		@if ($errors->has('link'))
 		<span class="help-block">
@@ -49,3 +58,13 @@
 
 
 {!! Form::close() !!}
+
+@push('script')
+
+<script type="text/javascript">
+	$('[name=link1]').change(function() {
+		$('[name=link]').val(this.value);
+	});
+</script>
+
+@endpush

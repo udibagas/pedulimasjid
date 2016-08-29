@@ -33,7 +33,10 @@ Route::resource('/category', 'CategoryController', ['only' => ['show']]);
 Route::resource('/donasi', 'DonasiController', ['only' => ['index']]);
 Route::resource('/inbox', 'InboxController', ['only' => ['index']]);
 Route::get('/pesan', 'InboxController@index');
-Route::resource('/masjid', 'MasjidController', ['only' => ['index']]);
+Route::get('/hubungi-kami', 'InboxController@index');
+Route::get('/kontak-kami', 'InboxController@index');
+Route::get('/kontak', 'InboxController@index');
+Route::resource('/masjid', 'MasjidController', ['only' => ['index', 'show']]);
 Route::resource('/post', 'PostController', ['only' => ['index', 'show']]);
 
 Route::auth();

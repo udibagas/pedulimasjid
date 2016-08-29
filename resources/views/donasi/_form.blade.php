@@ -41,11 +41,24 @@
 <div class="form-group{{ $errors->has('jenis') ? ' has-error' : '' }}">
 	<label for="jenis" class="col-md-2 control-label">Jenis :</label>
 	<div class="col-md-3">
-		{{ Form::select('jenis', ['zakat' => 'Zakat', 'sedekah' => 'Sedekah'], $donasi->jenis, ['class' => 'form-control', 'placeholder' => '-Pilih Jenis-']) }}
+		{{ Form::select('jenis', App\Donasi::getJenisList(), $donasi->jenis, ['class' => 'form-control', 'placeholder' => '-Pilih Jenis-']) }}
 
 		@if ($errors->has('jenis'))
 		<span class="help-block">
 			<strong>{{ $errors->first('jenis') }}</strong>
+		</span>
+		@endif
+	</div>
+</div>
+
+<div class="form-group{{ $errors->has('alokasi') ? ' has-error' : '' }}">
+	<label for="alokasi" class="col-md-2 control-label">Alokasi :</label>
+	<div class="col-md-3">
+		{{ Form::text('alokasi', $donasi->alokasi, ['class' => 'form-control', 'placeholder' => 'Alokasi']) }}
+
+		@if ($errors->has('alokasi'))
+		<span class="help-block">
+			<strong>{{ $errors->first('alokasi') }}</strong>
 		</span>
 		@endif
 	</div>

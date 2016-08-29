@@ -62,7 +62,7 @@ class InboxController extends Controller
             }
         );
 
-        return redirect('/inbox');
+        return redirect('/hubungi-kami');
     }
 
     /**

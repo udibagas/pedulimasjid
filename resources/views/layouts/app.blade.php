@@ -25,7 +25,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#8E4E4E;height:80px;border:none;">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -68,7 +68,7 @@
         @yield('slider')
     </div>
 
-    <div class="container" style="min-height:400px;padding:40px 15px;">
+    <div class="container-fluid" style="min-height:400px;padding-top:40px;padding-bottom:40px;">
         @yield('content')
     </div>
 

@@ -17,18 +17,31 @@ class DonasiController extends Controller
      */
     public function index(Request $request)
     {
+        $donasis = Donasi::when($request->tanggal, function($query) use ($request) {
+                        return $query->whereRaw('DAY(tanggal) = '.$request->tanggal);
+                    })->when($request->bulan, function($query) use ($request) {
+                        return $query->whereRaw('MONTH(tanggal) = '.$request->bulan);
+                    })->when($request->tahun, function($query) use ($request) {
+                        return $query->whereRaw('YEAR(tanggal) = '.$request->tahun);
+                    })->when($request->donatur, function($query) use ($request) {
+                        return $query->where('donatur', 'LIKE', '%'.$request->donatur.'%');
+                    })->when($request->alokasi, function($query) use ($request) {
+                        return $query->where('alokasi', 'LIKE', '%'.$request->alokasi.'%');
+                    })->when($request->keterangan, function($query) use ($request) {
+                        return $query->where('keterangan', 'LIKE', '%'.$request->keterangan.'%');
+                    })->when($request->jenis, function($query) use ($request) {
+                        return $query->ofJenis($request->jenis);
+                    })->latest()->get();
+
+        $perMonth = Donasi::selectRaw('DATE_FORMAT(tanggal, "%M") as bulan, SUM(jumlah) as jumlah')->groupBy('bulan')->get();
+        $perYear = Donasi::selectRaw('YEAR(tanggal) as tahun, SUM(jumlah) as jumlah')->groupBy('tahun')->get();
+        $perJenis = Donasi::selectRaw('jenis, SUM(jumlah) as jumlah')->groupBy('jenis')->get();
+
         return view('donasi.index', [
-            'donasis' => Donasi::when($request->tanggal, function($query) use ($request) {
-                            return $query->whereRaw('DAY(tanggal) = '.$request->tanggal);
-                        })->when($request->bulan, function($query) use ($request) {
-                            return $query->whereRaw('MONTH(tanggal) = '.$request->bulan);
-                        })->when($request->tahun, function($query) use ($request) {
-                            return $query->whereRaw('YEAR(tanggal) = '.$request->tahun);
-                        })->when($request->donatur, function($query) use ($request) {
-                            return $query->where('donatur', 'LIKE', '%'.$request->donatur.'%');
-                        })->when($request->jenis, function($query) use ($request) {
-                            return $query->where('jenis', $request->jenis);
-                        })->get()
+            'donasis' => $donasis,
+            'perMonth' => $perMonth,
+            'perYear' => $perYear,
+            'perJenis' => $perJenis,
         ]);
     }
 
@@ -43,9 +56,13 @@ class DonasiController extends Controller
                             return $query->whereRaw('YEAR(tanggal) = '.$request->tahun);
                         })->when($request->donatur, function($query) use ($request) {
                             return $query->where('donatur', 'LIKE', '%'.$request->donatur.'%');
+                        })->when($request->alokasi, function($query) use ($request) {
+                            return $query->where('alokasi', 'LIKE', '%'.$request->alokasi.'%');
+                        })->when($request->keterangan, function($query) use ($request) {
+                            return $query->where('keterangan', 'LIKE', '%'.$request->keterangan.'%');
                         })->when($request->jenis, function($query) use ($request) {
-                            return $query->where('jenis', $request->jenis);
-                        })->get()
+                            return $query->ofJenis($request->jenis);
+                        })->latest()->get()
         ]);
     }
 
@@ -56,7 +73,9 @@ class DonasiController extends Controller
      */
     public function create()
     {
-        return view('donasi.create', ['donasi' => new Donasi(['tanggal' => date('Y-m-d')])]);
+        return view('donasi.create', [
+            'donasi' => new Donasi(['tanggal' => date('Y-m-d')])
+        ]);
     }
 
     /**

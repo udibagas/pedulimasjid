@@ -12,7 +12,7 @@ class Menu extends Model
 
     public static function getMenuList()
     {
-        $posts = Post::selectRaw('CONCAT("/post/", id, "-", REPLACE(title, " ", "-")) AS link, title AS label')->published()->page()->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
+        $posts = Post::selectRaw('CONCAT("/post/", id, "-", REPLACE(title, " ", "-")) AS link, title AS label')->ofStatus(Post::STATUS_PUBLISHED)->ofType('page')->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
 
         $categories = Category::selectRaw('CONCAT("/category/", id, "-", REPLACE(name, " ", "-")) AS link, name AS label')->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
 
@@ -34,33 +34,9 @@ class Menu extends Model
         ];
     }
 
-    public function scopeLeft($query)
+    public function scopeOfPlacement($query, $placement)
     {
-        return $query->where('placement', 'left');
+        return $query->where('placement', $placement);
     }
 
-    public function scopeRight($query)
-    {
-        return $query->where('placement', 'right');
-    }
-
-    public function scopeFooter1($query)
-    {
-        return $query->where('placement', 'footer1');
-    }
-
-    public function scopeFooter2($query)
-    {
-        return $query->where('placement', 'footer2');
-    }
-
-    public function scopeFooter3($query)
-    {
-        return $query->where('placement', 'footer3');
-    }
-
-    public function scopeCopyright($query)
-    {
-        return $query->where('placement', 'copyright');
-    }
 }

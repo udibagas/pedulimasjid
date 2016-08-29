@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         return view('post.index', [
-            'posts' => Post::published()->post()->latest()->paginate()
+            'posts' => Post::published()->ofType('post')->latest()->paginate()
         ]);
     }
 

@@ -27,28 +27,13 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function scopeDraft($query)
+    public function scopeOfType($query, $type)
     {
-        return $query->where('status', self::STATUS_DRAFT);
+        return $query->where('type', $type);
     }
 
-    public function scopePublished($query)
+    public function scopeOfStatus($query, $status)
     {
-        return $query->where('status', self::STATUS_PUBLISHED);
-    }
-
-    public function scopeArchived($query)
-    {
-        return $query->where('status', self::STATUS_ARCHIVED);
-    }
-
-    public function scopePage($query)
-    {
-        return $query->where('type', self::TYPE_PAGE);
-    }
-
-    public function scopePost($query)
-    {
-        return $query->where('type', self::TYPE_POST);
+        return $query->where('status', $status);
     }
 }
