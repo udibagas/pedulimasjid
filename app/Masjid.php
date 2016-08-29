@@ -29,7 +29,7 @@ class Masjid extends Model
 
     public function kecamatan()
     {
-        return $this->belongsTo('App\Lokasi', 'kecataman_id', 'id');
+        return $this->belongsTo('App\Lokasi', 'kecamatan_id', 'id');
     }
 
     public function kelurahan()

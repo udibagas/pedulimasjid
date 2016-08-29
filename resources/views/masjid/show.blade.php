@@ -41,11 +41,11 @@
                         </tr>
                         <tr>
                             <td class="td-label">Kegiatan Rutin</td>
-                            <td>{{ $masjid->kegiatan }}</td>
+                            <td>{!! nl2br($masjid->kegiatan) !!}</td>
                         </tr>
                         <tr>
                             <td class="td-label">Kebutuhan Utama</td>
-                            <td>{{ $masjid->kebutuhan }}</td>
+                            <td>{!! nl2br($masjid->kebutuhan) !!}</td>
                         </tr>
                     </tbody>
                 </table>
