@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'sliders' => Slider::active()->get(),
-            'posts' => Post::post()->published()->limit(6)->get()
+            'posts' => Post::ofType('post')->ofStatus(Post::STATUS_PUBLISHED)->limit(6)->get()
         ]);
     }
 }

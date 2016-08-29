@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-4 col-sm-4">
             <ul class="list-group">
-                @foreach (\App\Post::published()->post()->limit(5)->get() as $p)
+                @foreach (\App\Post::ofType('post')->ofStatus(\App\Post::STATUS_PUBLISHED)->limit(5)->latest()->get() as $p)
                 <li class="list-group-item">
                     @include('post._list', ['p' => $p])
                 </li>
