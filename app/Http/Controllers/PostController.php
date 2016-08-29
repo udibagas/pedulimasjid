@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         return view('post.index', [
-            'posts' => Post::ofStatus(Post::STATUS_PUBLISHED)->ofType('post')->latest()->paginate()
+            'posts' => Post::ofStatus(Post::STATUS_PUBLISHED)->ofType(Post::TYPE_POST)->latest()->paginate()
         ]);
     }
 
@@ -74,7 +74,7 @@ class PostController extends Controller
     {
         $view = ($post->type == Post::TYPE_PAGE ) ? 'post.show-page' : 'post.show-post';
         $related = ($post->type == Post::TYPE_POST )
-            ? Post::ofType('post')->ofStatus(Post::STATUS_PUBLISHED)
+            ? Post::ofType(Post::TYPE_POST)->ofStatus(Post::STATUS_PUBLISHED)
                     ->whereNotIn('id', [$post->id])
                     ->where('category_id', $post->category_id)
                     ->limit(4)->latest()->get()

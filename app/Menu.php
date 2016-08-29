@@ -12,7 +12,7 @@ class Menu extends Model
 
     public static function getMenuList()
     {
-        $posts = Post::selectRaw('CONCAT("/post/", id, "-", REPLACE(title, " ", "-")) AS link, title AS label')->ofStatus(Post::STATUS_PUBLISHED)->ofType('page')->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
+        $posts = Post::selectRaw('CONCAT("/post/", id, "-", REPLACE(title, " ", "-")) AS link, title AS label')->ofStatus(Post::STATUS_PUBLISHED)->ofType(Post::TYPE_PAGE)->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
 
         $categories = Category::selectRaw('CONCAT("/category/", id, "-", REPLACE(name, " ", "-")) AS link, name AS label')->orderBy('label', 'ASC')->pluck('label', 'link')->toArray();
 
