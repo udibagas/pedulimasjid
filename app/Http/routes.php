@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/post/admin', 'PostController@admin');
     Route::resource('/post', 'PostController', ['except' => ['index', 'show']]);
     Route::resource('/slider', 'SliderController');
+    Route::get('/lokasi', 'LokasiController@index');
 });
 
 Route::resource('/category', 'CategoryController', ['only' => ['show']]);

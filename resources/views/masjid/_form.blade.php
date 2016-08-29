@@ -29,7 +29,7 @@
 <div class="form-group{{ $errors->has('kota_id') ? ' has-error' : '' }}">
 	<label for="kota_id" class="col-md-2 control-label">Kota:</label>
 	<div class="col-md-10">
-		{{ Form::select('kota_id', \App\Lokasi::kota()->pluck('nama', 'id'), $masjid->kota_id, ['class' => 'form-control', 'placeholder' => '-- Kota --']) }}
+		{{ Form::select('kota_id', [], $masjid->kota_id, ['class' => 'form-control', 'placeholder' => '-- Kota --']) }}
 
 		@if ($errors->has('kota_id'))
 		<span class="help-block">
@@ -42,7 +42,7 @@
 <div class="form-group{{ $errors->has('kecamatan_id') ? ' has-error' : '' }}">
 	<label for="kecamatan_id" class="col-md-2 control-label">Kecamatan:</label>
 	<div class="col-md-10">
-		{{ Form::select('kecamatan_id', \App\Lokasi::kecamatan()->pluck('nama', 'id'), $masjid->kecamatan_id, ['class' => 'form-control', 'placeholder' => '-- Kecamatan --']) }}
+		{{ Form::select('kecamatan_id', [], $masjid->kecamatan_id, ['class' => 'form-control', 'placeholder' => '-- Kecamatan --']) }}
 
 		@if ($errors->has('kecamatan_id'))
 		<span class="help-block">
@@ -55,7 +55,7 @@
 <div class="form-group{{ $errors->has('kelurahan_id') ? ' has-error' : '' }}">
 	<label for="kelurahan_id" class="col-md-2 control-label">Kelurahan:</label>
 	<div class="col-md-10">
-		{{ Form::select('kelurahan_id', \App\Lokasi::kelurahan()->pluck('nama', 'id'), $masjid->kelurahan_id, ['class' => 'form-control', 'placeholder' => '-- Kelurahan --']) }}
+		{{ Form::select('kelurahan_id', [], $masjid->kelurahan_id, ['class' => 'form-control', 'placeholder' => '-- Kelurahan --']) }}
 
 		@if ($errors->has('kelurahan_id'))
 		<span class="help-block">
@@ -195,7 +195,53 @@
 @push('script')
 
 <script type="text/javascript">
+
 	$('select').chosen();
+
+	$('[name=provinsi_id]').change(function() {
+		$.ajax({
+			url: '/lokasi?propinsi='+this.value,
+			type: 'GET',
+			dataType: 'json',
+			success: function(j) {
+				$('[name=kota_id]').html('<option value="">-- Kota --</option>');
+				$.each(j, function(i, v) {
+					$('[name=kota_id]').append('<option value="'+v.id+'">'+v.nama+'</option>');
+				});
+				$('[name=kota_id]').trigger("chosen:updated");
+			}
+		});
+	});
+
+	$('[name=kota_id]').change(function() {
+		$.ajax({
+			url: '/lokasi?kota='+this.value,
+			type: 'GET',
+			dataType: 'json',
+			success: function(j) {
+				$('[name=kecamatan_id]').html('<option value="">-- Kecamatan --</option>');
+				$.each(j, function(i, v) {
+					$('[name=kecamatan_id]').append('<option value="'+v.id+'">'+v.nama+'</option>');
+				});
+				$('[name=kecamatan_id]').trigger("chosen:updated");
+			}
+		});
+	});
+
+	$('[name=kecamatan_id]').change(function() {
+		$.ajax({
+			url: '/lokasi?kecamatan='+this.value,
+			type: 'GET',
+			dataType: 'json',
+			success: function(j) {
+				$('[name=kelurahan_id]').html('<option value="">-- Kelurahan --</option>');
+				$.each(j, function(i, v) {
+					$('[name=kelurahan_id]').append('<option value="'+v.id+'">'+v.nama+'</option>');
+				});
+				$('[name=kelurahan_id]').trigger("chosen:updated");
+			}
+		});
+	});
 </script>
 
 @endpush

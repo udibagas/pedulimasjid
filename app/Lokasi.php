@@ -8,6 +8,11 @@ class Lokasi extends Model
 {
     public $table = 'lokasi';
 
+    public function getNamaAttribute($value)
+    {
+        return ucwords(strtolower($value));
+    }
+
     public function scopePropinsi($query)
     {
         return $query->where('kota', '00')
