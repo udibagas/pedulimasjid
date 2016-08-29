@@ -191,3 +191,11 @@
 
 
 {!! Form::close() !!}
+
+@push('script')
+
+<script type="text/javascript">
+	$('select').chosen();
+</script>
+
+@endpush
