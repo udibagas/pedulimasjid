@@ -36,8 +36,8 @@
                 </td>
                 <td>{{ $s->lat }}, {{ $s->long }}</td>
                 <td>{{ $s->kontak_nama }} @if ($s->kontak_telp) <br />{{ $s->kontak_telp }} @endif</td>
-                <td>{{ $s->kebutuhan }}</td>
-                <td>{{ $s->kegiatan }}</td>
+                <td>{!! nl2br($s->kebutuhan) !!}</td>
+                <td>{!! nl2br($s->kegiatan) !!}</td>
                 <td class="text-right">
                     {!! Form::open(['method' => 'DELETE', 'url' => '/masjid/'.$s->id]) !!}
                         <a href="/masjid/{{ $s->id }}/edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
