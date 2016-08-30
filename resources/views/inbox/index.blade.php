@@ -21,7 +21,7 @@
             </p>
 
             <div class="well text-bold">
-                Email : <a href="mailto:pedulimasjid@salamdakwah.com">pedulimasjid@salamdakwah.com</a><br>
+                Email : <a href="mailto:lontar.aditya@mail.com">lontar.aditya@mail.com</a><br>
                 WA/SMS : 08568648757
             </div>
 
