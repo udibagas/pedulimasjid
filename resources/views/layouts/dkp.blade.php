@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Salwa Peduli Masjid</title>
+    <title>DATA KOMUNIKA PRIMA</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -38,13 +38,13 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    SALWA PEDULI MASJID
+                    DATA KOMUNIKA PRIMA
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse" style="margin-top:-40px;">
                 <!-- Left Side Of Navbar -->
-                <!-- <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/category') }}">CATEGORIES</a></li>
                     <li><a href="{{ url('/menu') }}">MENUS</a></li>
                     <li><a href="{{ url('/post/admin') }}">POSTS</a></li>
@@ -53,7 +53,7 @@
                     <li><a href="{{ url('/donasi/admin') }}">DONASI</a></li>
                     <li><a href="{{ url('/inbox/admin') }}">INBOX</a></li>
                     <li><a href="{{ url('/user') }}">USERS</a></li>
-                </ul> -->
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -72,25 +72,7 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <br>
-                <div class="list-group">
-                    <a  class="list-group-item" href="{{ url('/category') }}"><i class="fa fa-tags"></i> CATEGORIES</a>
-                    <a  class="list-group-item" href="{{ url('/comment') }}"><i class="fa fa-comments"></i> COMMENTS</a>
-                    <a  class="list-group-item" href="{{ url('/donasi/admin') }}"><i class="fa fa-money"></i> DONASI</a>
-                    <a  class="list-group-item" href="{{ url('/inbox/admin') }}"><i class="fa fa-inbox"></i> INBOX</a>
-                    <a  class="list-group-item" href="{{ url('/masjid/admin') }}"><i class="fa fa-home"></i> MASJID</a>
-                    <a  class="list-group-item" href="{{ url('/menu') }}"><i class="fa fa-bars"></i> MENUS</a>
-                    <a  class="list-group-item" href="{{ url('/post/admin') }}"><i class="fa fa-file-text"></i> POSTS</a>
-                    <a  class="list-group-item" href="{{ url('/slider') }}"><i class="fa fa-image"></i> SLIDERS</a>
-                    <!-- <a  class="list-group-item" href="{{ url('/user') }}"><i class="fa fa-users"></i> USERS</a> -->
-                </div>
-            </div>
-            <div class="col-md-10">
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
     </div>
 
     <script type="text/javascript">

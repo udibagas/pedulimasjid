@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use App\Menu;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Relation::morphMap([
+			'post' => \App\Post::class,
+			'masjid' => \App\Masjid::class,
+		]);
+
         view()->share([
 			'menuLeft'       => Menu::ofPlacement('left')->get(),
 			'menuRight'      => Menu::ofPlacement('right')->get(),

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', $post->title)
+@section('image', 'http://www.salwapedulimasj.id/'.$post->img)
+@section('imageSquare', 'http://www.salwapedulimasj.id/'.$post->img)
+@section('description', str_limit(strip_tags($post->content), 250))
 
 @section('content')
 
@@ -15,6 +18,10 @@
         <h2>{{ $post->title }}</h2>
 
         {!! $post->content !!}
+
+        <br><br>
+
+        @include('layouts._share')
     </div>
 </div>
 

@@ -36,4 +36,9 @@ class Masjid extends Model
     {
         return $this->belongsTo('App\Lokasi', 'kelurahan_id', 'id');
     }
+
+    public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

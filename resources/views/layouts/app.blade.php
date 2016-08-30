@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Salwa Peduli Masjid | @yield('title')</title>
+    <link rel="image_src" href="@yield('image')" />
+
+	<meta property="og:url" content="{{ url()->full() }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="@yield('title')" />
+	<meta property="og:site_name" content="Salwa Peduli Masjid" />
+	<meta property="og:description" content="@yield('description')" />
+	<meta property="og:image" content="@yield('image')" />
+
+	<!-- for Twitter -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="@yield('title')" />
+	<meta name="twitter:description" content="@yield('description')" />
+	<meta name="twitter:image" content="@yield('imageSquare')" />
+
+	<meta name="author" content="SalwaPeduliMasjid" />
+	<meta name="description" content="@yield('description')" />
+	<meta name="keyword" content="peduli, masjid, iqra, tpq, tpa, dkm, sunnah, peduli masjid, musholla, taawun, donasi, sedekah, zakat, qurban" />
+	<meta name="copyright" content="Copyright {{ date('Y') }} by SalwaPeduliMasj.Id" />
+	<meta name="language" content="id" />
+	<meta name="distribution" content="Global" />
+	<meta name="rating" content="General" />
+	<meta name="robots" content="index,follow" />
+	<meta name="googlebot" content="index,follow" />
+
+	<meta name="revisit-after" content="1 days" />
+	<meta name="expires" content="never" />
+	<meta name="dc.title" content="SalwaPeduliMasj.Id" />
+	<meta name="dc.creator.e-mail" content="udibagas@gmail.com" />
+	<meta name="dc.creator.name" content="SalwaPeduliMasjid" />
+	<meta name="dc.creator.website" content="http://www.salwapedulimasj.id" />
+	<meta name="tgn.name" content="Jakarta" />
+	<meta name="tgn.nation" content="Indonesia" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="/fa/css/font-awesome.min.css">
@@ -130,6 +163,14 @@
 			onOpen: function() { $('.navbar-fixed-top').css('right', '-275px'); $('.navbar-fixed-top').css('left', '275px'); },
 			onClose: function() { $('.navbar-fixed-top').css('left', '0'); $('.navbar-fixed-top').css('right', '0'); }
 		});
+
+        $(document).on('click', '.confirm', function() {
+            return confirm('Anda yakin?');
+        });
+
+        $('.summernote').summernote({
+            height: 250
+        });
 
 	</script>
 

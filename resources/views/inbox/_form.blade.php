@@ -40,8 +40,6 @@
 	@endif
 </div>
 
-<hr>
-
 <div class="form-group">
 	<button type="sumbit" name="save" class="btn btn-brown">KIRIM PESAN</button>
 </div>

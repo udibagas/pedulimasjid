@@ -16,11 +16,14 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/category', 'CategoryController', ['except' => ['show']]);
+    Route::resource('/comment', 'CommentController', ['only' => ['index', 'show', 'destroy']]);
+    Route::get('/comment/{comment}/approve', 'CommentController@approve');
+    Route::get('/comment/{comment}/unapprove', 'CommentController@unapprove');
     Route::get('/donasi/admin', 'DonasiController@admin');
     Route::resource('/donasi', 'DonasiController', ['except' => ['index']]);
     Route::get('/inbox/admin', 'InboxController@admin');
     Route::resource('/inbox', 'InboxController', ['except' => ['index']]);
-    Route::resource('/outbox', 'OutboxController', ['only' => ['create', 'store', 'delete']]);
+    Route::resource('/outbox', 'OutboxController', ['only' => ['create', 'store']]);
     Route::get('/masjid/admin', 'MasjidController@admin');
     Route::resource('/masjid', 'MasjidController');
     Route::resource('/menu', 'MenuController', ['except' => ['show']]);
@@ -31,6 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::resource('/category', 'CategoryController', ['only' => ['show']]);
+Route::resource('/comment', 'CommentController', ['only' => ['store']]);
 Route::resource('/donasi', 'DonasiController', ['only' => ['index']]);
 Route::resource('/inbox', 'InboxController', ['only' => ['index']]);
 Route::get('/pesan', 'InboxController@index');

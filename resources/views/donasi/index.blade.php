@@ -5,6 +5,7 @@
 @section('content')
 
     <h3>LAPORAN DONASI</h3>
+    @include('layouts._share')
     <hr>
 
     <div class="row">

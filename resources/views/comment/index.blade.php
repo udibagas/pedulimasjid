@@ -9,35 +9,39 @@
         {!! Form::close() !!}
     </div>
 
-    <h3>MANAGE INBOX</h3>
+    <h3>MANAGE COMMENTS</h3>
     <hr>
 
     <table class="table table-striped table-hover table-condensed">
         <thead>
             <tr>
                 <th>Sender</th>
-                <th>Subject</th>
-                <th>Body</th>
+                <th>Title</th>
+                <th>Content</th>
                 <th>Date</th>
                 <th style="width:60px;">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($inboxes as $s)
-            <tr class="@if ($s->status == \App\Inbox::STATUS_UNREAD) text-bold @endif">
+            @foreach ($comments as $s)
+            <tr class="@if ($s->approved == 0) danger @endif">
                 <td>
                     {{ $s->name }}
                     <br><a href="mailto:{{ $s->email }}">{{ $s->email }}</a>
                 </td>
-                <td><a href="/inbox/{{ $s->id }}-{{ str_slug($s->subject) }}">{{ $s->subject }}</a></td>
-                <td>{{ str_limit($s->body, 100) }}</td>
+                <td><a href="/comment/{{ $s->id }}-{{ str_slug($s->title) }}">{{ $s->title }}</a></td>
+                <td>{{ str_limit($s->content, 100) }}</td>
                 <td>{{ $s->created_at->diffForHumans() }}</td>
                 <td class="text-right">
-                    {!! Form::open(['method' => 'DELETE', 'url' => '/inbox/'.$s->id]) !!}
-                        @if ($s->status != \App\Inbox::STATUS_REPLIED)
-                        <a href="/outbox/create?inbox_id={{ $s->id }}" class="btn btn-default btn-xs" title="Reply"><i class="fa fa-reply"></i></a>
+                    {!! Form::open(['method' => 'DELETE', 'url' => '/comment/'.$s->id]) !!}
+                        {!! Form::hidden('redirect', '/comment') !!}
+
+                        @if ($s->approved)
+                            <a href="/comment/{{ $s->id }}/unapprove?redirect={{ url()->full() }}" class="btn btn-default btn-xs" title="Unapprove"><i class="fa fa-remove"></i></a>
+                        @else
+                            <a href="/comment/{{ $s->id }}/approve?redirect={{ url()->full() }}" class="btn btn-default btn-xs" title="Approve"><i class="fa fa-check"></i></a>
                         @endif
-                        <!-- <a href="/inbox/{{ $s->id }}/edit" class="btn btn-default btn-xs" title="Edit"><i class="fa fa-edit"></i></a> -->
+
                         <button type="submit" name="delete" class="btn btn-default btn-xs confirm" title="Delete"><i class="fa fa-trash"></i></button>
                     {!! Form::close() !!}
                 </td>
@@ -46,10 +50,10 @@
         </tbody>
     </table>
 
-    <div class="pull-right text-muted">{{ $inboxes->total() }} items</div>
+    <div class="pull-right text-muted">{{ $comments->total() }} items</div>
 
     <div class="text-center">
-        {{ $inboxes->appends(['q' => request('q')])->links() }}
+        {{ $comments->appends(['q' => request('q')])->links() }}
     </div>
 
 @endsection

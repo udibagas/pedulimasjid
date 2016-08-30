@@ -1,9 +1,14 @@
 <div class="well">
-    @if (auth()->check() && $i->status != \App\Inbox::STATUS_REPLIED)
+    @if (auth()->check())
         <div class="pull-right">
-            <a href="/outbox/create?inbox_id={{ $i->id }}" title="Reply" class="btn btn-default btn-sm">
-                <i class="fa fa-reply"></i> REPLY
-            </a>
+            {!! Form::open(['method' => 'DELETE', 'url' => '/inbox/'.$i->id]) !!}
+                @if ($i->status != \App\Inbox::STATUS_REPLIED)
+                <a href="/outbox/create?inbox_id={{ $i->id }}" title="Reply" class="btn btn-default btn-sm">
+                    <i class="fa fa-reply"></i> REPLY
+                </a>
+                @endif
+                <button type="submit" name="delete" class="btn btn-default btn-sm confirm" title="Delete"><i class="fa fa-trash"></i> DELETE</button>
+            {!! Form::close() !!}
         </div>
     @endif
 

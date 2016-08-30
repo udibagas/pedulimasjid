@@ -5,6 +5,7 @@
 @section('content')
 
     <h2>{{ $category->name }}</h2>
+    @include('layouts._share')
     <hr>
 
     <div class="row">

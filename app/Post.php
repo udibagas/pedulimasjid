@@ -36,4 +36,9 @@ class Post extends Model
     {
         return $query->where('status', $status);
     }
+
+    public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

@@ -11,6 +11,7 @@
 </div>
 
 <h3>DAFTAR MASJID</h3>
+@include('layouts._share')
 <hr>
 
 <div class="hidden-md hidden-sm hidden-lg hidden-xl">
