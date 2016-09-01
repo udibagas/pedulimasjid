@@ -13,8 +13,6 @@
 			@endif
 		</div>
 
-		<hr>
-
 		<div class="form-group">
 			<button type="sumbit" name="save" class="btn btn-info">BALAS</button>
 		</div>
