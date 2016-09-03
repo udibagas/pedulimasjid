@@ -57,7 +57,15 @@
             <h3>KOMENTAR</h3>
             <hr>
 
-            @each('comment._list', $masjid->comments()->approved()->get(), 'c')
+            @if (session('success'))
+            	<div class="alert alert-success text-bold text-center">
+            		{{ session('success') }}
+            	</div>
+            @endif
+
+            @each('comment._list', $masjid->comments()->when(auth()->guest(), function($q) {
+                return $q->approved();
+            })->get(), 'c')
 
             <div class="well">
                 @include('comment._form', [

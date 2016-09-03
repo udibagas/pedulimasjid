@@ -47,7 +47,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         $comment = Comment::create($request->all());
-        return redirect('/'.$comment->commentable_type.'/'.$comment->commentable_id);
+        return redirect('/'.$comment->commentable_type.'/'.$comment->commentable_id)->with('success', 'Komentar Anda akan tampil setelah dimoderasi.');
     }
 
     /**
