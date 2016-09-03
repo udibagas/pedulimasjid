@@ -39,6 +39,10 @@
                             <td>{{ $masjid->kontak_nama }} - {{ $masjid->kontak_telp }}</td>
                         </tr>
                         <tr>
+                            <td class="td-label">Kondisi Saat Ini :</td>
+                            <td>{!! nl2br($masjid->kondisi) !!}</td>
+                        </tr>
+                        <tr>
                             <td class="td-label">Kegiatan Rutin :</td>
                             <td>{!! nl2br($masjid->kegiatan) !!}</td>
                         </tr>

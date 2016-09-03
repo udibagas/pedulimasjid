@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('kontak_nama') ? ' has-error' : '' }}">
-				<label for="kontak_nama" class="col-md-3 control-label">Contact Person :</label>
+				<label for="kontak_nama" class="col-md-3 control-label">Contact Person:</label>
 				<div class="col-md-5">
 					{{ Form::text('kontak_nama', $masjid->kontak_nama, ['class' => 'form-control', 'placeholder' => 'CP Name']) }}
 
@@ -33,6 +33,19 @@
 					@if ($errors->has('kontak_telp'))
 					<span class="help-block">
 						<strong>{{ $errors->first('kontak_telp') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('kondisi') ? ' has-error' : '' }}">
+				<label for="kondisi" class="col-md-3 control-label">Kondisi Saat Ini:</label>
+				<div class="col-md-9">
+					{{ Form::textarea('kondisi', $masjid->kondisi, ['class' => 'form-control', 'placeholder' => 'Kondisi Saat Ini', 'rows' => 5]) }}
+
+					@if ($errors->has('kondisi'))
+					<span class="help-block">
+						<strong>{{ $errors->first('kondisi') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -77,6 +90,19 @@
 					@if ($masjid->img)
 					<br>
 					<img src="/{{ $masjid->img }}" alt="" class="img-responsive" />
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('approved') ? ' has-error' : '' }}">
+				<label for="img" class="col-md-3 control-label">Approved:</label>
+				<div class="col-md-9">
+					{{ Form::select('approved', [0 => 'No', 1 => 'Yes'], $masjid->approved, ['class' => 'form-control', 'placeholder' => '-- Status --']) }}
+
+					@if ($errors->has('approved'))
+					<span class="help-block">
+						<strong>{{ $errors->first('approved') }}</strong>
+					</span>
 					@endif
 				</div>
 			</div>
@@ -197,7 +223,7 @@
 
 <script type="text/javascript">
 
-	$('select').chosen();
+	$('select:not([name="approved"])').chosen();
 
 	var getKota = function(propinsi) {
 		$.ajax({

@@ -14,6 +14,10 @@
 @include('layouts._share')
 <hr>
 
+<div class="well text-bold text-center">
+    Berikut adalah daftar masjid yang telah kami verifikasi dan membutuhkan bantuan.
+</div>
+
 <div class="hidden-md hidden-sm hidden-lg hidden-xl">
 {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
         {!! Form::text('q', request('q'), ['class' => 'form-control', 'placeholder' => 'Search']) !!}

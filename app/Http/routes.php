@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/inbox', 'InboxController', ['except' => ['index']]);
     Route::resource('/outbox', 'OutboxController', ['only' => ['create', 'store']]);
     Route::get('/masjid/admin', 'MasjidController@admin');
+    Route::get('/masjid/{masjid}/approve', 'MasjidController@approve');
+    Route::get('/masjid/{masjid}/unapprove', 'MasjidController@unapprove');
     Route::resource('/masjid', 'MasjidController');
     Route::resource('/menu', 'MenuController', ['except' => ['show']]);
     Route::get('/post/admin', 'PostController@admin');

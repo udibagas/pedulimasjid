@@ -18,7 +18,7 @@ class MasjidController extends Controller
     public function index(Request $request)
     {
         return view('masjid.index', [
-            'masjids' => Masjid::when($request->q, function($query) use ($request) {
+            'masjids' => Masjid::approved()->when($request->q, function($query) use ($request) {
                             return $query->where('nama', 'LIKE', '%'.$request->q.'%');
                         })->paginate()
         ]);
@@ -123,6 +123,18 @@ class MasjidController extends Controller
     public function destroy(Masjid $masjid)
     {
         $masjid->delete();
+        return redirect('/masjid/admin');
+    }
+
+    public function approve(Request $request, Masjid $masjid)
+    {
+        $masjid->update(['approved' => 1]);
+        return redirect('/masjid/admin');
+    }
+
+    public function unapprove(Request $request, Masjid $masjid)
+    {
+        $masjid->update(['approved' => 0]);
         return redirect('/masjid/admin');
     }
 }

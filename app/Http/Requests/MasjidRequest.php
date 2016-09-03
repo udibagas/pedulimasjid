@@ -35,6 +35,10 @@ class MasjidRequest extends Request
             'lat' => 'numeric',
             'long' => 'numeric',
             'img' => 'image',
+            'kegiatan' => 'required',
+            'kebutuhan' => 'required',
+            'kondisi' => 'required',
+            'approved' => 'required',
         ];
     }
 }

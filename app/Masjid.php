@@ -9,7 +9,7 @@ class Masjid extends Model
     public $fillable = [
         'nama', 'pulau_id', 'provinsi_id', 'kota_id', 'kecamatan_id',
         'kelurahan_id', 'alamat', 'kontak_nama', 'kontak_telp',
-        'lat', 'long', 'kode_pos', 'kegiatan', 'kebutuhan', 'img'
+        'lat', 'long', 'kode_pos', 'kegiatan', 'kebutuhan', 'img', 'kondisi', 'approved'
     ];
 
     public function pulau()
@@ -40,5 +40,15 @@ class Masjid extends Model
     public function comments()
 	{
 		return $this->morphMany('App\Comment', 'commentable');
+	}
+
+    public function scopeApproved($query)
+	{
+		return $query->where('approved', 1);
+	}
+
+	public function scopeUnapproved($query)
+	{
+		return $query->where('approved', 0);
 	}
 }
