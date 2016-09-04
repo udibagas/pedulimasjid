@@ -160,3 +160,14 @@ body.sidr-open { position: fixed !important; }
 .table-no-border > tbody > tr > td {
     border: none;
 }
+
+.menu-home {
+    border:2px solid #3C1818;
+    color:#3C1818;
+    font-size:20px;
+    padding:10px;
+}
+
+.menu-home:hover {
+    text-decoration: none;
+}

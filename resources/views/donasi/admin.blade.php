@@ -13,20 +13,22 @@
     <table class="table table-striped table-hover table-condensed">
         <thead>
             <tr>
-                <th>Tanggal</th>
+                <th>Tgl</th>
                 <th>Bulan</th>
                 <th>Tahun</th>
+                <th>Pengirim</th>
+                <th>Penerima</th>
                 <th>Donatur</th>
                 <th>Jenis</th>
                 <th>Keterangan</th>
                 <th>Alokasi</th>
                 <th>Jumlah</th>
-                <th style="width:60px;">Action</th>
+                <th style="width:90px;">Action</th>
             </tr>
             {!! Form::open(['method' => 'GET']) !!}
             <tr>
                 <td>
-                    {!! Form::text('tanggal', request('tanggal'), ['class' => 'form-control', 'placeholder' => 'Tanggal']) !!}
+                    {!! Form::text('tanggal', request('tanggal'), ['class' => 'form-control', 'placeholder' => 'Tgl']) !!}
                 </td>
                 <td>
                     {!! Form::select('bulan', [
@@ -39,6 +41,12 @@
                     {!! Form::text('tahun', request('tahun'), ['class' => 'form-control', 'placeholder' => 'Tahun']) !!}
                 </td>
                 <td>
+                    {!! Form::text('pengirim', request('pengirim'), ['class' => 'form-control', 'placeholder' => 'Pengirim']) !!}
+                </td>
+                <td>
+                    {!! Form::text('penerima', request('penerima'), ['class' => 'form-control', 'placeholder' => 'Penerima']) !!}
+                </td>
+                <td>
                     {!! Form::text('donatur', request('donatur'), ['class' => 'form-control', 'placeholder' => 'Donatur']) !!}
                 </td>
                 <td>
@@ -49,6 +57,9 @@
                 </td>
                 <td>
                     {!! Form::text('alokasi', request('alokasi'), ['class' => 'form-control', 'placeholder' => 'Alokasi']) !!}
+                </td>
+                <td>
+                    {!! Form::text('jumlah', request('jumlah'), ['class' => 'form-control', 'placeholder' => 'Jumlah']) !!}
                 </td>
                 <td class="text-right">
                     <button type="submit" name="filter" class="btn btn-default" value="filter"><i class="fa fa-filter"></i></button>
@@ -75,10 +86,20 @@
                     $qurban += $s->jumlah;
                 }
             ?>
-            <tr>
+            <tr class="@if (!$s->confirmed) danger @endif">
                 <td>{{ date('d', strtotime($s->tanggal)) }}</td>
                 <td>{{ date('F', strtotime($s->tanggal)) }}</td>
                 <td>{{ date('Y', strtotime($s->tanggal)) }}</td>
+                <td>
+                    {{ $s->pengirim }}<br>
+                    {{ $s->bank_pengirim }}<br>
+                    {{ $s->rekening_pengirim }}
+                </td>
+                <td>
+                    {{ $s->penerima }}<br>
+                    {{ $s->bank_penerima }}<br>
+                    {{ $s->rekening_penerima }}
+                </td>
                 <td>{{ $s->donatur }}</td>
                 <td>{{ $s->jenis }}</td>
                 <td>{{ $s->keterangan }}</td>
@@ -86,6 +107,13 @@
                 <td class="text-right">{{ number_format($s->jumlah, 0, ',', '.') }}</td>
                 <td class="text-right">
                     {!! Form::open(['method' => 'DELETE', 'url' => '/donasi/'.$s->id]) !!}
+
+                        @if ($s->confirmed)
+                            <a href="/donasi/{{ $s->id }}/unconfirm" class="btn btn-default btn-xs confirm" title="Unconfirm"><i class="fa fa-remove"></i></a>
+                        @else
+                            <a href="/donasi/{{ $s->id }}/confirm" class="btn btn-default btn-xs confirm" title="Confirm"><i class="fa fa-check"></i></a>
+                        @endif
+
                         <a href="/donasi/{{ $s->id }}/edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
                         <button type="submit" name="submit" class="confirm btn btn-default btn-xs"><i class="fa fa-trash"></i></button>
                     {!! Form::close() !!}

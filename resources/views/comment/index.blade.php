@@ -37,9 +37,9 @@
                         {!! Form::hidden('redirect', '/comment') !!}
 
                         @if ($s->approved)
-                            <a href="/comment/{{ $s->id }}/unapprove?redirect={{ url()->full() }}" class="btn btn-default btn-xs" title="Unapprove"><i class="fa fa-remove"></i></a>
+                            <a href="/comment/{{ $s->id }}/unapprove?redirect={{ url()->full() }}" class="btn btn-default btn-xs confirm" title="Unapprove"><i class="fa fa-remove"></i></a>
                         @else
-                            <a href="/comment/{{ $s->id }}/approve?redirect={{ url()->full() }}" class="btn btn-default btn-xs" title="Approve"><i class="fa fa-check"></i></a>
+                            <a href="/comment/{{ $s->id }}/approve?redirect={{ url()->full() }}" class="btn btn-default btn-xs confirm" title="Approve"><i class="fa fa-check"></i></a>
                         @endif
 
                         <button type="submit" name="delete" class="btn btn-default btn-xs confirm" title="Delete"><i class="fa fa-trash"></i></button>

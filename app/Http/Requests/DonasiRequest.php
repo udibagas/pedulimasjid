@@ -13,7 +13,7 @@ class DonasiRequest extends Request
      */
     public function authorize()
     {
-        return auth()->check();
+        return true;
     }
 
     /**
@@ -27,7 +27,14 @@ class DonasiRequest extends Request
             'tanggal' => 'required|date',
             'donatur' => 'required',
             'jenis' => 'required',
-            'jumlah' => 'required|numeric'
+            'jumlah' => 'required|numeric',
+            'penerima' => 'required',
+            'bank_penerima' => 'required',
+            'rekening_penerima' => 'required',
+            'pengirim' => 'required',
+            'bank_pengirim' => 'required',
+            'rekening_pengirim' => 'required',
+            'bukti_transfer' => 'image'
         ];
     }
 }

@@ -151,24 +151,9 @@
 		</div>
 	</div>
 
-	<div class="form-group{{ $errors->has('confirmed') ? ' has-error' : '' }}">
-		<label for="confirmed" class="col-md-3 control-label">Confirmed :</label>
-		<div class="col-md-9">
-			{{ Form::select('confirmed', [0 => 'No', 1 => 'Yes'], $donasi->confirmed, ['class' => 'form-control', 'placeholder' => '-- Pilih Jenis --']) }}
-
-			@if ($errors->has('confirmed'))
-			<span class="help-block">
-				<strong>{{ $errors->first('confirmed') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-
-	<hr>
-
 	<div class="form-group">
-		<div class="col-md-10 col-md-offset-2">
-			<button type="sumbit" name="save" class="btn btn-info">SAVE</button>
+		<div class="col-md-9 col-md-offset-3">
+			<button type="sumbit" name="save" class="btn btn-brown">KONFIRMASI</button>
 		</div>
 	</div>
 </div>

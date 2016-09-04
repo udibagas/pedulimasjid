@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/comment/{comment}/unapprove', 'CommentController@unapprove');
     Route::get('/donasi/admin', 'DonasiController@admin');
     Route::resource('/donasi', 'DonasiController', ['except' => ['index']]);
+    Route::get('/donasi/{donasi}/confirm', 'DonasiController@confirm');
+    Route::get('/donasi/{donasi}/unconfirm', 'DonasiController@unconfirm');
     Route::get('/inbox/admin', 'InboxController@admin');
     Route::resource('/inbox', 'InboxController', ['except' => ['index']]);
     Route::resource('/outbox', 'OutboxController', ['only' => ['create', 'store']]);
@@ -42,6 +44,8 @@ Route::get('/pesan', 'InboxController@index');
 Route::get('/hubungi-kami', 'InboxController@index');
 Route::get('/kontak-kami', 'InboxController@index');
 Route::get('/kontak', 'InboxController@index');
+Route::get('/konfirmasi-donasi', 'DonasiController@konfirmasi');
+Route::post('/simpan-konfirmasi', 'DonasiController@simpanKonfirmasi');
 Route::resource('/masjid', 'MasjidController', ['except' => ['destroy']]);
 Route::resource('/post', 'PostController', ['only' => ['index', 'show']]);
 Route::get('daftarkan-masjid', 'MasjidController@create');

@@ -17,7 +17,7 @@ class DonasiController extends Controller
      */
     public function index(Request $request)
     {
-        $donasis = Donasi::when($request->tanggal, function($query) use ($request) {
+        $donasis = Donasi::confirmed()->when($request->tanggal, function($query) use ($request) {
                         return $query->whereRaw('DAY(tanggal) = '.$request->tanggal);
                     })->when($request->bulan, function($query) use ($request) {
                         return $query->whereRaw('MONTH(tanggal) = '.$request->bulan);
@@ -33,9 +33,9 @@ class DonasiController extends Controller
                         return $query->ofJenis($request->jenis);
                     })->latest()->get();
 
-        $perMonth = Donasi::selectRaw('DATE_FORMAT(tanggal, "%M") as bulan, SUM(jumlah) as jumlah')->groupBy('bulan')->get();
-        $perYear = Donasi::selectRaw('YEAR(tanggal) as tahun, SUM(jumlah) as jumlah')->groupBy('tahun')->get();
-        $perJenis = Donasi::selectRaw('jenis, SUM(jumlah) as jumlah')->groupBy('jenis')->get();
+        $perMonth = Donasi::confirmed()->selectRaw('DATE_FORMAT(tanggal, "%M") as bulan, SUM(jumlah) as jumlah')->groupBy('bulan')->get();
+        $perYear = Donasi::confirmed()->selectRaw('YEAR(tanggal) as tahun, SUM(jumlah) as jumlah')->groupBy('tahun')->get();
+        $perJenis = Donasi::confirmed()->selectRaw('jenis, SUM(jumlah) as jumlah')->groupBy('jenis')->get();
 
         return view('donasi.index', [
             'donasis' => $donasis,
@@ -74,8 +74,54 @@ class DonasiController extends Controller
     public function create()
     {
         return view('donasi.create', [
-            'donasi' => new Donasi(['tanggal' => date('Y-m-d')])
+            'donasi' => new Donasi([
+                            'tanggal' => date('Y-m-d'),
+                            'penerima' => 'Aditya Lontar Nugroho',
+                            'bank_penerima' => 'Bank Muamalat',
+                            'rekening_penerima' => '3090002187'
+                        ])
         ]);
+    }
+
+    public function konfirmasi()
+    {
+        return view('donasi.konfirmasi', [
+            'donasi' => new Donasi([
+                            'tanggal' => date('Y-m-d'),
+                            'penerima' => 'Aditya Lontar Nugroho',
+                            'bank_penerima' => 'Bank Muamalat',
+                            'rekening_penerima' => '3090002187'
+                        ])
+        ]);
+    }
+
+    public function simpanKonfirmasi(Request $request)
+    {
+        $data = $request->all();
+
+        if ($request->hasFile('bukti_transfer')) {
+
+            $file = $request->file('bukti_transfer');
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/images/', $fileName);
+            $data['bukti_transfer'] = 'uploads/images/'.$fileName;
+        }
+
+        $donasi = Donasi::create($data);
+
+        return redirect('/donasi')->with('success', 'Terimakasih atas donasi Anda. Semoga Allah menerima sebagai amal shaleh dan harta yang Anda infaq-kan bermanfaat bagi kaum muslimin. Setelah kami verifikasi donasi Anda akan tampil di halaman ini.');
+    }
+
+    public function confirm(Request $request, Donasi $donasi)
+    {
+        $donasi->update(['confirmed' => 1]);
+        return redirect('/donasi/admin');
+    }
+
+    public function unconfirm(Request $request, Donasi $donasi)
+    {
+        $donasi->update(['confirmed' => 0]);
+        return redirect('/donasi/admin');
     }
 
     /**
