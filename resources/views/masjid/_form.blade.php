@@ -41,7 +41,7 @@
 			<div class="form-group{{ $errors->has('kondisi') ? ' has-error' : '' }}">
 				<label for="kondisi" class="col-md-3 control-label">Kondisi Saat Ini:</label>
 				<div class="col-md-9">
-					{{ Form::textarea('kondisi', $masjid->kondisi, ['class' => 'form-control', 'placeholder' => 'Kondisi Saat Ini', 'rows' => 5]) }}
+					{{ Form::textarea('kondisi', $masjid->kondisi, ['class' => 'form-control', 'placeholder' => 'Kondisi Saat Ini', 'rows' => 3]) }}
 
 					@if ($errors->has('kondisi'))
 					<span class="help-block">
@@ -54,7 +54,7 @@
 			<div class="form-group{{ $errors->has('kegiatan') ? ' has-error' : '' }}">
 				<label for="kegiatan" class="col-md-3 control-label">Kegiatan Rutin:</label>
 				<div class="col-md-9">
-					{{ Form::textarea('kegiatan', $masjid->kegiatan, ['class' => 'form-control', 'placeholder' => 'Kegiatan Rutin', 'rows' => 5]) }}
+					{{ Form::textarea('kegiatan', $masjid->kegiatan, ['class' => 'form-control', 'placeholder' => 'Kegiatan Rutin', 'rows' => 3]) }}
 
 					@if ($errors->has('kegiatan'))
 					<span class="help-block">
@@ -67,7 +67,7 @@
 			<div class="form-group{{ $errors->has('kebutuhan') ? ' has-error' : '' }}">
 				<label for="kebutuhan" class="col-md-3 control-label">Kebutuhan Utama:</label>
 				<div class="col-md-9">
-					{{ Form::textarea('kebutuhan', $masjid->kebutuhan, ['class' => 'form-control', 'placeholder' => 'Kebutuhan Utama', 'rows' => 5]) }}
+					{{ Form::textarea('kebutuhan', $masjid->kebutuhan, ['class' => 'form-control', 'placeholder' => 'Kebutuhan Utama', 'rows' => 3]) }}
 
 					@if ($errors->has('kebutuhan'))
 					<span class="help-block">
@@ -78,7 +78,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-3 control-label">Image:</label>
+				<label for="img" class="col-md-3 control-label">Foto Masjid:</label>
 				<div class="col-md-9">
 					<input type="file" name="img" class="note-image-input form-control" placeholder="Thumbnail">
 					@if ($errors->has('img'))
@@ -94,7 +94,9 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('approved') ? ' has-error' : '' }}">
+			@if (auth()->check())
+
+			<!-- <div class="form-group{{ $errors->has('approved') ? ' has-error' : '' }}">
 				<label for="img" class="col-md-3 control-label">Approved:</label>
 				<div class="col-md-9">
 					{{ Form::select('approved', [0 => 'No', 1 => 'Yes'], $masjid->approved, ['class' => 'form-control', 'placeholder' => '-- Status --']) }}
@@ -105,13 +107,14 @@
 					</span>
 					@endif
 				</div>
-			</div>
+			</div> -->
+
+			@endif
+
 		</div>
 	</div>
 	<div class="col-md-4">
 		<div class="well">
-			<h4 class="text-center">LOKASI</h4>
-			<hr>
 			<div class="form-group{{ $errors->has('provinsi_id') ? ' has-error' : '' }}">
 				<div class="col-md-12">
 					{{ Form::select('provinsi_id', \App\Lokasi::propinsi()->pluck('nama', 'id'), $masjid->provinsi_id, ['class' => 'form-control', 'placeholder' => '-- Provinsi --']) }}
@@ -126,7 +129,7 @@
 
 			<div class="form-group{{ $errors->has('kota_id') ? ' has-error' : '' }}">
 				<div class="col-md-12">
-					{{ Form::select('kota_id', [], $masjid->kota_id, ['class' => 'form-control', 'placeholder' => '-- Kota --']) }}
+					{{ Form::select('kota_id', $masjid->id ? \App\Lokasi::kota()->where('propinsi', $masjid->provinsi->propinsi)->pluck('nama', 'id')  : [], $masjid->kota_id, ['class' => 'form-control', 'placeholder' => '-- Kota --']) }}
 
 					@if ($errors->has('kota_id'))
 					<span class="help-block">
@@ -138,7 +141,7 @@
 
 			<div class="form-group{{ $errors->has('kecamatan_id') ? ' has-error' : '' }}">
 				<div class="col-md-12">
-					{{ Form::select('kecamatan_id', [], $masjid->kecamatan_id, ['class' => 'form-control', 'placeholder' => '-- Kecamatan --']) }}
+					{{ Form::select('kecamatan_id', $masjid->id ? \App\Lokasi::kecamatan()->where('kota', $masjid->kota->kota)->pluck('nama', 'id')  : [], $masjid->kecamatan_id, ['class' => 'form-control', 'placeholder' => '-- Kecamatan --']) }}
 
 					@if ($errors->has('kecamatan_id'))
 					<span class="help-block">
@@ -150,7 +153,7 @@
 
 			<div class="form-group{{ $errors->has('kelurahan_id') ? ' has-error' : '' }}">
 				<div class="col-md-12">
-					{{ Form::select('kelurahan_id', [], $masjid->kelurahan_id, ['class' => 'form-control', 'placeholder' => '-- Kelurahan --']) }}
+					{{ Form::select('kelurahan_id', $masjid->id ? \App\Lokasi::kelurahan()->where('kecamatan', $masjid->kecamatan->kecamatan)->pluck('nama', 'id') : [], $masjid->kelurahan_id, ['class' => 'form-control', 'placeholder' => '-- Kelurahan --']) }}
 
 					@if ($errors->has('kelurahan_id'))
 					<span class="help-block">
@@ -208,13 +211,14 @@
 				</div>
 			</div>
 
-			<hr>
-
-			<div class="form-group text-center">
-				<button type="sumbit" name="save" class="btn btn-info">SAVE</button>
-			</div>
 		</div>
 	</div>
+</div>
+
+<hr>
+
+<div class="text-center">
+	<button type="sumbit" name="save" class="btn btn-brown btn-info">SIMPAN</button>
 </div>
 
 {!! Form::close() !!}
@@ -269,12 +273,6 @@
 			}
 		});
 	};
-
-	@if ($masjid->id)
-		// getKota($('[name=provinsi_id]').val());
-		// getKecamatan($('[name=kota_id]').val());
-		// getKelurahan($('[name=kecamatan_id]').val());
-	@endif
 
 	$('[name=provinsi_id]').change(function() {
 		getKota(this.value);

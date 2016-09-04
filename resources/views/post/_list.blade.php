@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media" style="height:120px;">
     <div class="media-left">
         <div  style="width:100px;height:100px;">
             <a href="/post/{{ $p->id }}-{{ str_slug($p->title) }}">

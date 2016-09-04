@@ -46,6 +46,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
+    <link rel="stylesheet" href="/chosen/chosen.min.css">
     <link rel="stylesheet" href="/css/app.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -55,6 +56,7 @@
     <script src="/highcharts/js/highcharts.js"></script>
     <script src="/highcharts/js/modules/exporting.js"></script>
     <script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
+    <script src="/chosen/chosen.jquery.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 </head>
@@ -146,7 +148,7 @@
         </div>
     </div>
 
-    <div class="sidr" id="sidr">
+    <div class="sidr hidden-lg hidden-md hidden-xl" id="sidr">
         <div class="list-group">
             @foreach ($menuLeft as $m)
             <a href="{{ $m->link }}" class="list-group-item">{{ $m->label }}</a>

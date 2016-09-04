@@ -14,8 +14,17 @@
 @include('layouts._share')
 <hr>
 
+@if (session('success'))
+    <div class="alert alert-success text-bold text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="well text-bold text-center">
-    Berikut adalah daftar masjid yang telah kami verifikasi dan membutuhkan bantuan.
+    <p>
+        Berikut adalah daftar masjid yang telah kami verifikasi dan membutuhkan bantuan. Untuk mendaftarkan masjid sebagai penerima bantuan silakan klik tombol di bawah ini.
+    </p>
+    <a href="/daftarkan-masjid" class="btn btn-brown"><i class="fa fa-edit"></i> DAFTARKAN MASJID</a>
 </div>
 
 <div class="hidden-md hidden-sm hidden-lg hidden-xl">

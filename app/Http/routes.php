@@ -27,12 +27,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/masjid/admin', 'MasjidController@admin');
     Route::get('/masjid/{masjid}/approve', 'MasjidController@approve');
     Route::get('/masjid/{masjid}/unapprove', 'MasjidController@unapprove');
-    Route::resource('/masjid', 'MasjidController');
+    Route::resource('/masjid', 'MasjidController', ['only' => ['destroy']]);
     Route::resource('/menu', 'MenuController', ['except' => ['show']]);
     Route::get('/post/admin', 'PostController@admin');
     Route::resource('/post', 'PostController', ['except' => ['index', 'show']]);
     Route::resource('/slider', 'SliderController');
-    Route::get('/lokasi', 'LokasiController@index');
 });
 
 Route::resource('/category', 'CategoryController', ['only' => ['show']]);
@@ -43,7 +42,9 @@ Route::get('/pesan', 'InboxController@index');
 Route::get('/hubungi-kami', 'InboxController@index');
 Route::get('/kontak-kami', 'InboxController@index');
 Route::get('/kontak', 'InboxController@index');
-Route::resource('/masjid', 'MasjidController', ['only' => ['index', 'show']]);
+Route::resource('/masjid', 'MasjidController', ['except' => ['destroy']]);
 Route::resource('/post', 'PostController', ['only' => ['index', 'show']]);
+Route::get('daftarkan-masjid', 'MasjidController@create');
+Route::get('/lokasi', 'LokasiController@index');
 
 Route::auth();

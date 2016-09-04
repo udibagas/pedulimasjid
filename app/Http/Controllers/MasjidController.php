@@ -62,7 +62,7 @@ class MasjidController extends Controller
         }
 
         Masjid::create($data);
-        return redirect('/masjid/admin');
+        return redirect('/masjid')->with('success', 'Terimakasih atas partisipasi Anda. Data telah kami simpan di database kami dan akan kami verifikasi  terlebih dahulu sebelum tampil di halaman ini.');
     }
 
     /**

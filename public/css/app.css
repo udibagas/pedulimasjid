@@ -118,6 +118,7 @@ h1,h2,h3,h4,h5,h6 {
 .btn-brown {
     background-color: #3C1818;
     color: #fff;
+    border-color: #3C1818;
 }
 
 .btn-brown:hover {
