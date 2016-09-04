@@ -2,8 +2,8 @@
 
 <div class="well">
 	<div class="form-group{{ $errors->has('tanggal') ? ' has-error' : '' }}">
-		<label for="tanggal" class="col-md-3 control-label">Tanggal Transfer :</label>
-		<div class="col-md-9">
+		<label for="tanggal" class="col-md-3 col-sm-3 control-label">Tanggal Transfer :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::text('tanggal', $donasi->tanggal, ['class' => 'form-control', 'placeholder' => 'Tanggal Transfer']) }}
 			@if ($errors->has('tanggal'))
 			<span class="help-block">
@@ -14,8 +14,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('pengirim') ? ' has-error' : '' }}">
-		<label for="pengirim" class="col-md-3 control-label">Pengirim :</label>
-		<div class="col-md-3">
+		<label for="pengirim" class="col-md-3 col-sm-3 control-label">Pengirim :</label>
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('pengirim', $donasi->pengirim, ['class' => 'form-control', 'placeholder' => 'Nama Pengirim']) }}
 
 			@if ($errors->has('pengirim'))
@@ -24,7 +24,7 @@
 			</span>
 			@endif
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('bank_pengirim', $donasi->bank_pengirim, ['class' => 'form-control', 'placeholder' => 'Bank Pengirim']) }}
 
 			@if ($errors->has('bank_pengirim'))
@@ -33,7 +33,7 @@
 			</span>
 			@endif
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('rekening_pengirim', $donasi->rekening_pengirim, ['class' => 'form-control', 'placeholder' => 'Rekening Pengirim']) }}
 
 			@if ($errors->has('rekening_pengirim'))
@@ -45,8 +45,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('donatur') ? ' has-error' : '' }}">
-		<label for="donatur" class="col-md-3 control-label">Atas Nama :</label>
-		<div class="col-md-9">
+		<label for="donatur" class="col-md-3 col-sm-3 control-label">Atas Nama :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::text('donatur', $donasi->donatur, ['class' => 'form-control', 'placeholder' => 'Atas Nama']) }}
 			@if ($errors->has('donatur'))
 			<span class="help-block">
@@ -57,8 +57,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('penerima') ? ' has-error' : '' }}">
-		<label for="penerima" class="col-md-3 control-label">Penerima :</label>
-		<div class="col-md-3">
+		<label for="penerima" class="col-md-3 col-sm-3 control-label">Penerima :</label>
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('penerima', $donasi->penerima, ['class' => 'form-control', 'placeholder' => 'Penerima']) }}
 
 			@if ($errors->has('penerima'))
@@ -67,7 +67,7 @@
 			</span>
 			@endif
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('bank_penerima', $donasi->bank_penerima, ['class' => 'form-control', 'placeholder' => 'Bank Penerima']) }}
 
 			@if ($errors->has('bank_penerima'))
@@ -76,7 +76,7 @@
 			</span>
 			@endif
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			{{ Form::text('rekening_penerima', $donasi->rekening_penerima, ['class' => 'form-control', 'placeholder' => 'Rekening Penerima']) }}
 
 			@if ($errors->has('rekening_penerima'))
@@ -88,8 +88,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('jumlah') ? ' has-error' : '' }}">
-		<label for="jumlah" class="col-md-3 control-label">Jumlah :</label>
-		<div class="col-md-9">
+		<label for="jumlah" class="col-md-3 col-sm-3 control-label">Jumlah :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::text('jumlah', $donasi->jumlah, ['class' => 'form-control', 'placeholder' => 'Jumlah']) }}
 
 			@if ($errors->has('jumlah'))
@@ -101,8 +101,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('jenis') ? ' has-error' : '' }}">
-		<label for="jenis" class="col-md-3 control-label">Jenis :</label>
-		<div class="col-md-9">
+		<label for="jenis" class="col-md-3 col-sm-3 control-label">Jenis :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::select('jenis', App\Donasi::getJenisList(), $donasi->jenis, ['class' => 'form-control', 'placeholder' => '-- Pilih Jenis --']) }}
 
 			@if ($errors->has('jenis'))
@@ -114,8 +114,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
-		<label for="keterangan" class="col-md-3 control-label">Keterangan :</label>
-		<div class="col-md-9">
+		<label for="keterangan" class="col-md-3 col-sm-3 control-label">Keterangan :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::text('keterangan', $donasi->keterangan, ['class' => 'form-control', 'placeholder' => 'Keterangan']) }}
 
 			@if ($errors->has('keterangan'))
@@ -127,8 +127,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('alokasi') ? ' has-error' : '' }}">
-		<label for="alokasi" class="col-md-3 control-label">Alokasi :</label>
-		<div class="col-md-9">
+		<label for="alokasi" class="col-md-3 col-sm-3 control-label">Alokasi :</label>
+		<div class="col-md-9 col-sm-9">
 			{{ Form::text('alokasi', $donasi->alokasi, ['class' => 'form-control', 'placeholder' => 'Alokasi']) }}
 
 			@if ($errors->has('alokasi'))
@@ -140,8 +140,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('bukti_transfer') ? ' has-error' : '' }}">
-		<label for="bukti_transfer" class="col-md-3 control-label">Bukti Transfer :</label>
-		<div class="col-md-9">
+		<label for="bukti_transfer" class="col-md-3 col-sm-3 control-label">Bukti Transfer :</label>
+		<div class="col-md-9 col-sm-9">
 			<input type="file" name="bukti_transfer" class="note-image-input form-control" placeholder="Bukti Transfer">
 			@if ($errors->has('bukti_transfer'))
 			<span class="help-block">
@@ -152,7 +152,7 @@
 	</div>
 
 	<div class="form-group">
-		<div class="col-md-9 col-md-offset-3">
+		<div class="col-md-9 col-sm-9 col-md-offset-3 col-sm-offset-3">
 			<button type="sumbit" name="save" class="btn btn-brown">KONFIRMASI</button>
 		</div>
 	</div>
