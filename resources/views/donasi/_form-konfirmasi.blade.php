@@ -139,10 +139,10 @@
 		</div>
 	</div>
 
-	<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+	<div class="form-group{{ $errors->has('bukti_transfer') ? ' has-error' : '' }}">
 		<label for="bukti_transfer" class="col-md-3 control-label">Bukti Transfer :</label>
 		<div class="col-md-9">
-			<input type="file" name="img" class="note-image-input form-control" placeholder="Bukti Transfer">
+			<input type="file" name="bukti_transfer" class="note-image-input form-control" placeholder="Bukti Transfer">
 			@if ($errors->has('bukti_transfer'))
 			<span class="help-block">
 				<strong>{{ $errors->first('bukti_transfer') }}</strong>

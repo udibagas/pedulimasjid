@@ -132,7 +132,17 @@ class DonasiController extends Controller
      */
     public function store(DonasiRequest $request)
     {
-        Donasi::create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('bukti_transfer')) {
+
+            $file = $request->file('bukti_transfer');
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/images/', $fileName);
+            $data['bukti_transfer'] = 'uploads/images/'.$fileName;
+        }
+
+        $donasi = Donasi::create($data);
         return redirect('/donasi/admin');
     }
 
@@ -170,7 +180,21 @@ class DonasiController extends Controller
      */
     public function update(DonasiRequest $request, Donasi $donasi)
     {
-        $donasi->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('bukti_transfer')) {
+
+            $file = $request->file('bukti_transfer');
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/images/', $fileName);
+            $data['bukti_transfer'] = 'uploads/images/'.$fileName;
+
+            if ($donasi->bukti_transfer && file_exists($donasi->bukti_transfer)) {
+    			unlink($donasi->bukti_transfer);
+    		}
+        }
+
+        $donasi->update($data);
         return redirect('/donasi/admin');
     }
 

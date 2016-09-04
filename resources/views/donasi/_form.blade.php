@@ -139,18 +139,6 @@
 		</div>
 	</div>
 
-	<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-		<label for="bukti_transfer" class="col-md-3 control-label">Bukti Transfer :</label>
-		<div class="col-md-9">
-			<input type="file" name="img" class="note-image-input form-control" placeholder="Bukti Transfer">
-			@if ($errors->has('bukti_transfer'))
-			<span class="help-block">
-				<strong>{{ $errors->first('bukti_transfer') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-
 	<div class="form-group{{ $errors->has('confirmed') ? ' has-error' : '' }}">
 		<label for="confirmed" class="col-md-3 control-label">Confirmed :</label>
 		<div class="col-md-9">
@@ -164,10 +152,27 @@
 		</div>
 	</div>
 
+	<div class="form-group{{ $errors->has('bukti_transfer') ? ' has-error' : '' }}">
+		<label for="bukti_transfer" class="col-md-3 control-label">Bukti Transfer :</label>
+		<div class="col-md-9">
+			<input type="file" name="bukti_transfer" class="note-image-input form-control" placeholder="Bukti Transfer">
+			@if ($errors->has('bukti_transfer'))
+			<span class="help-block">
+				<strong>{{ $errors->first('bukti_transfer') }}</strong>
+			</span>
+			@endif
+
+			@if ($donasi->bukti_transfer)
+				<br>
+				<img src="/{{ $donasi->bukti_transfer }}" alt="" class="img-responsive" />
+			@endif
+		</div>
+	</div>
+
 	<hr>
 
 	<div class="form-group">
-		<div class="col-md-10 col-md-offset-2">
+		<div class="col-md-9 col-md-offset-3">
 			<button type="sumbit" name="save" class="btn btn-info">SAVE</button>
 		</div>
 	</div>
