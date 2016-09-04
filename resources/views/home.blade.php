@@ -36,7 +36,7 @@
 
 <div class="row">
     @foreach (\App\Category::orderBy('name', 'ASC')->get() as $c)
-        @if (count($c->posts))
+        @if ($c->posts()->ofType(\App\Post::TYPE_POST)->ofStatus(\App\Post::STATUS_PUBLISHED)->count())
         <div class="col-md-4 col-sm-6" style="margin-bottom:20px;">
             <div class="well">
                 <h3>{{ $c->name }}</h3>
