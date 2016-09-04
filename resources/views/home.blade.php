@@ -44,6 +44,11 @@
                 @foreach ($c->posts()->latest()->ofStatus(\App\Post::STATUS_PUBLISHED)->ofType(\App\Post::TYPE_POST)->limit(3)->get() as $p)
                     @include('post._list', ['p' => $p])
                 @endforeach
+
+                <hr>
+                <a href="/category/{{ $c->id }}-{{ str_slug($c->name) }}" class="text-center">
+                    <h4>MORE</h4>
+                </a>
             </div>
         </div>
         @endif

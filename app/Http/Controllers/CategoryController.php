@@ -58,6 +58,7 @@ class CategoryController extends Controller
         return view('category.show', [
             'category' => $category,
             'posts' => $category->posts()
+                        ->ofType(Post::TYPE_POST)
                         ->ofStatus(Post::STATUS_PUBLISHED)
                         ->latest()->paginate()
         ]);
