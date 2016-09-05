@@ -25,6 +25,8 @@ class MasjidRequest extends Request
     {
         return [
             'nama' => 'required',
+            'kontak_nama' => 'required',
+            'kontak_telp' => 'required',
             // 'pulau_id' => 'required',
             'provinsi_id' => 'required',
             'kota_id' => 'required',
@@ -38,7 +40,6 @@ class MasjidRequest extends Request
             'kegiatan' => 'required',
             'kebutuhan' => 'required',
             'kondisi' => 'required',
-            'approved' => 'required',
         ];
     }
 }

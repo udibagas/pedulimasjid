@@ -24,7 +24,7 @@
             <i class="fa fa-edit"></i> KONFIRMASI DONASI
         </a>
     </div>
-    <div class="col-md-3 col-sm-3" class="menu-home">
+    <div class="col-md-3 col-sm-3">
         <a href="/hubungi-kami" class="menu-home">
             <i class="fa fa-envelope"></i> HUBUNGI KAMI
         </a>

@@ -187,8 +187,8 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-				<div class="col-md-12">
+			<div class="form-group{{ $errors->has('lat') || $errors->has('long') ? ' has-error' : '' }}">
+				<div class="col-md-6">
 					{{ Form::text('lat', $masjid->lat, ['class' => 'form-control', 'placeholder' => 'Latitude']) }}
 
 					@if ($errors->has('lat'))
@@ -197,10 +197,7 @@
 					</span>
 					@endif
 				</div>
-			</div>
-
-			<div class="form-group{{ $errors->has('long') ? ' has-error' : '' }}">
-				<div class="col-md-12">
+				<div class="col-md-6">
 					{{ Form::text('long', $masjid->long, ['class' => 'form-control', 'placeholder' => 'Longitude']) }}
 
 					@if ($errors->has('long'))

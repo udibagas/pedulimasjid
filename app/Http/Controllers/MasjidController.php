@@ -49,7 +49,7 @@ class MasjidController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MasjidRequest $request)
     {
         $data = $request->all();
 
@@ -62,6 +62,7 @@ class MasjidController extends Controller
         }
 
         Masjid::create($data);
+
         return redirect('/masjid')->with('success', 'Terimakasih atas partisipasi Anda. Data telah kami simpan di database kami dan akan kami verifikasi  terlebih dahulu sebelum tampil di halaman ini.');
     }
 
