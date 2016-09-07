@@ -61,7 +61,12 @@ class MasjidController extends Controller
             $data['img'] = 'uploads/images/'.$fileName;
         }
 
-        Masjid::create($data);
+        $masjid = Masjid::create($data);
+
+        \Mail::send('email.masjid', ['masjid' => $masjid], function ($m) use ($masjid) {
+                $m->to('lontar.aditya@mail.com', 'Lontar Aditya')->subject('Pendaftaran Masjid Baru: '.$masjid->nama);
+            }
+        );
 
         return redirect('/masjid')->with('success', 'Terimakasih atas partisipasi Anda. Data telah kami simpan di database kami dan akan kami verifikasi  terlebih dahulu sebelum tampil di halaman ini.');
     }

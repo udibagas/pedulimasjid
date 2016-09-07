@@ -109,6 +109,11 @@ class DonasiController extends Controller
 
         $donasi = Donasi::create($data);
 
+        \Mail::send('email.donasi', ['donasi' => $donasi], function ($m) use ($donasi) {
+                $m->to('lontar.aditya@mail.com', 'Lontar Aditya')->subject('Konfimasi Donasi a.n '.$donasi->donatur);
+            }
+        );
+
         return redirect('/donasi')->with('success', 'Terimakasih atas donasi Anda. Semoga Allah menerima sebagai amal shaleh dan harta yang Anda infaq-kan bermanfaat bagi kaum muslimin. Setelah kami verifikasi donasi Anda akan tampil di halaman ini.');
     }
 

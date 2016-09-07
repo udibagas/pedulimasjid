@@ -47,7 +47,15 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         $comment = Comment::create($request->all());
-        return redirect('/'.$comment->commentable_type.'/'.$comment->commentable_id)->with('success', 'Komentar Anda akan tampil setelah dimoderasi.');
+
+        \Mail::send('email.comment', ['comment' => $comment], function ($m) use ($comment) {
+                $m->setReplyTo([$comment->email => $comment->name]);
+                $m->to('lontar.aditya@mail.com', 'Lontar Aditya')->subject('Komentar Baru: '.$comment->title);
+            }
+        );
+
+        return redirect('/'.$comment->commentable_type.'/'.$comment->commentable_id)
+                ->with('success', 'Komentar Anda akan tampil setelah dimoderasi.');
     }
 
     /**

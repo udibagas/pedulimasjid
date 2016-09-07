@@ -58,7 +58,7 @@ class InboxController extends Controller
         // kirim email disini
         \Mail::send('email.inbox', ['inbox' => $inbox], function ($m) use ($inbox) {
                 $m->setReplyTo([$inbox->email => $inbox->name]);
-                $m->to('lontar.aditya@mail.com', 'Lontar Aditya')->subject($inbox->subject);
+                $m->to('lontar.aditya@mail.com', 'Lontar Aditya')->subject('Pesan Baru: '.$inbox->subject);
             }
         );
 
